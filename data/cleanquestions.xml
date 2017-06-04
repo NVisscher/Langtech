@@ -930,7 +930,7 @@
     </answer>
   </question>
   <question studentnumber="s2548798">
-    <string>What is the birth name of Gordon Ramsey?</string>
+    <string>What is the birth name of Gordon Ramsay?</string>
     <answer>
       <string>Gordon James Ramsay</string>
       <uri>https://www.wikidata.org/wiki/Q15280</uri>
@@ -1403,11 +1403,11 @@
   <question studentnumber="s2695332">
     <string>What ingredients does cake contain?</string>
     <answer>
-      <string>Sugar</string>
+      <string>sugar</string>
       <uri>https://www.wikidata.org/wiki/Q13276</uri>
     </answer>
     <answer>
-      <string>Flour</string>
+      <string>flour</string>
       <uri>https://www.wikidata.org/wiki/Q13276</uri>
     </answer>
   </question>
@@ -1433,7 +1433,7 @@
     </answer>
   </question>
   <question studentnumber="s2710560">
-    <string>Is mayonnaise an emlusion or a suspension?</string>
+    <string>Is mayonnaise an emulsion or a suspension?</string>
     <answer>
       <string>emulsion</string>
       <uri>https://www.wikidata.org/wiki/Q167893</uri>
