@@ -19,7 +19,7 @@
     </answer>
   </question>
    <question studentnumber="s0817589">
-    <string>When are snickers introduced?</string>
+    <string>When was Snickers introduced?</string>
     <answer>
       <string>1930</string>
       <uri>https://www.wikidata.org/entity/Q714179</uri>
@@ -82,11 +82,11 @@
   <question studentnumber="s1767844">
     <string>In what colors do grapes come?</string>
     <answer>
-      <string>Purple</string>
+      <string>purple</string>
       <uri>https://www.wikidata.org/entity/Q10978</uri>
     </answer>
     <answer>
-      <string>Green</string>
+      <string>green</string>
       <uri>https://www.wikidata.org/entity/Q10978</uri>
     </answer>
   </question>
@@ -1026,7 +1026,7 @@
     </answer>
   </question>
   <question studentnumber="s2576597">
-    <string>What color is a lemon?</string>
+    <string>What color does a lemon have?</string>
     <answer>
       <string>lemon</string>
       <uri>https://www.wikidata.org/wiki/Q1093742</uri>
