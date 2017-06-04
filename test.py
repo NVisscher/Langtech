@@ -22,11 +22,17 @@ else:
 debugLog("Ready")
 
 
-xmldoc = minidom.parse("data/allquestions.xml")
+xmldoc = minidom.parse("data/cleanquestions.xml")
 items = xmldoc.getElementsByTagName('question')
 
 correct = 0
-total = len(items)
+total = 0
+
+def printStats():
+	print("####")
+	print("Total:", total)
+	print("Correct:", correct, "(", float(correct)/float(total), "%)")
+	print("####")
 
 for item in items:
 	# Question text
@@ -50,8 +56,5 @@ for item in items:
 		print("Question:", question)
 		print("Expected:", expectedoutput)
 		print("Result:", answers)
-
-print("####")
-print("Total:", total)
-print("Correct:", correct, "(", float(correct)/float(total), "%")
-
+	total = total + 1
+	printStats()

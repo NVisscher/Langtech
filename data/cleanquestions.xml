@@ -1,0 +1,1442 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<questions>
+  <question studentnumber="s0817589">
+    <string>What are the ingredients of Pingado?</string>
+    <answer>
+      <string>coffee</string>
+      <uri>https://www.wikidata.org/entity/Q8486</uri>
+    </answer>
+    <answer>
+      <string>milk</string>
+      <uri>https://www.wikidata.org/entity/Q8495</uri>
+    </answer>
+  </question>
+   <question studentnumber="s0817589">
+    <string>What is the origin of Café con leche?</string>
+    <answer>
+      <string>Spain</string>
+      <uri>https://www.wikidata.org/entity/Q1061720</uri>
+    </answer>
+  </question>
+   <question studentnumber="s0817589">
+    <string>When are snickers introduced?</string>
+    <answer>
+      <string>1930</string>
+      <uri>https://www.wikidata.org/entity/Q714179</uri>
+    </answer>
+  </question>
+  <question studentnumber="s1767844">
+    <string>What's the country of origin of shawarma?</string>
+    <answer>
+      <string>Syria</string>
+      <uri>https://www.wikidata.org/entity/Q3412448</uri>
+    </answer>
+  </question>
+  <question studentnumber="s1767844">
+    <string>What kind of beer is Heineken?</string>
+    <answer>
+      <string>Pilsener</string>
+      <uri>https://www.wikidata.org/entity/Q854383</uri>
+    </answer>
+  </question>
+  <question studentnumber="s1767844">
+    <string>List the main ingredients of bread</string>
+    <answer>
+      <string>Water</string>
+      <uri>https://www.wikidata.org/entity/Q7802</uri>
+    </answer>
+    <answer>
+      <string>Flour</string>
+      <uri>https://www.wikidata.org/entity/Q7802</uri>
+    </answer>
+    <answer>
+      <string>Sodium chloride</string>
+      <uri>https://www.wikidata.org/entity/Q7802</uri>
+    </answer>
+  </question>
+  <question studentnumber="s1767844">
+    <string>Who founded McDonald's?</string>
+    <answer>
+      <string>Richard and Maurice McDonald</string>
+      <uri>https://www.wikidata.org/entity/Q38076</uri>
+    </answer>
+    <answer>
+      <string>Ray Crok</string>
+      <uri>https://www.wikidata.org/entity/Q38076</uri>
+    </answer>
+  </question>
+  <question studentnumber="s1767844">
+    <string>When was Coca-cola introduced?</string>
+    <answer>
+      <string>1886</string>
+      <uri>https://www.wikidata.org/entity/Q2813</uri>
+    </answer>
+  </question>
+  <question studentnumber="s1767844">
+    <string>What country does Tomato Ketchup come from?</string>
+    <answer>
+      <string>Malaysia</string>
+      <uri>https://www.wikidata.org/entity/Q178143</uri>
+    </answer>
+  </question>
+  <question studentnumber="s1767844">
+    <string>In what colors do grapes come?</string>
+    <answer>
+      <string>Purple</string>
+      <uri>https://www.wikidata.org/entity/Q10978</uri>
+    </answer>
+    <answer>
+      <string>Green</string>
+      <uri>https://www.wikidata.org/entity/Q10978</uri>
+    </answer>
+  </question>
+  <question studentnumber="s1767844">
+    <string>Is barbecuing considered a cooking technique?</string>
+    <answer>
+      <string>Yes</string>
+      <uri>https://www.wikidata.org/entity/Q461696</uri>
+    </answer>
+  </question>
+  <question studentnumber="s1981188">
+    <string>Which global chain of fast food restaurants is also known as Hungry Jacks?</string>
+    <answer>
+      <string>Burger King</string>
+      <uri>http://www.wikidata.org/entity/Q177054</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2020947">
+    <string>What country does katsuobushi originate from?</string>
+    <answer>
+      <string>Japan</string>
+      <uri>https://www.wikidata.org/entity/Q113739</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2020947">
+    <string>What does a sandwich consist of?</string>
+    <answer>
+      <string>bread</string>
+      <uri>https://www.wikidata.org/entity/Q28803</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2020947">
+    <string>What is used to make an omelette?</string>
+    <answer>
+      <string>egg</string>
+      <uri>https://www.wikidata.org/entity/Q20129</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2020947">
+    <string>What product is produced by Heineken?</string>
+    <answer>
+      <string>beer</string>
+      <uri>https://www.wikidata.org/entity/Q180855</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2020947">
+    <string>After whom was Earl Grey tea named?</string>
+    <answer>
+      <string>Charles Grey, 2nd Earl Grey</string>
+      <uri>https://www.wikidata.org/entity/Q207788</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2020947">
+    <string>What is the date of birth of the person Earl Gray tea was named after?</string>
+    <answer>
+      <string>13 March 1764</string>
+      <uri>https://www.wikidata.org/wiki/Q294662</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2020947">
+    <string>What is the color of the material that wine is made of?</string>
+    <answer>
+      <string>purple</string>
+      <uri>https://www.wikidata.org/wiki/Q10978</uri>
+    </answer>
+    <answer>
+      <string>green</string>
+      <uri>https://www.wikidata.org/wiki/Q10978</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2020947">
+    <string>What is a plate used for?</string>
+    <answer>
+      <string>food presentation</string>
+      <uri>https://www.wikidata.org/wiki/Q57216</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2020947">
+    <string>What city was the hamburger named after?</string>
+    <answer>
+      <string>Hamburg</string>
+      <uri>https://www.wikidata.org/entity/Q6663</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2199041">
+    <string>What are the ingredients of Roquefort cheese?</string>
+    <answer>
+      <string>Raw milk</string>
+      <uri>http://www.wikidata.org/entity/Q189221</uri>
+    </answer>
+    <answer>
+      <string>Sheep milk</string>
+      <uri>http://www.wikidata.org/entity/Q189221</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2199041">
+    <string>After whom is the Bloody Mary cocktail named?</string>
+    <answer>
+      <string>Mary I of England</string>
+      <uri>http://www.wikidata.org/entity/Q207711</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2199041">
+    <string>Which German dish contains cabbage?</string>
+    <answer>
+      <string>Sauerkraut</string>
+      <uri>http://www.wikidata.org/entity/Q154166</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2199041">
+    <string>Where does mustard originate from?</string>
+    <answer>
+      <string>Italy</string>
+      <uri>http://www.wikidata.org/entity/Q131748</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2199041">
+    <string>How do you make honey?</string>
+    <answer>
+      <string>Beekeeping</string>
+      <uri>http://www.wikidata.org/entity/Q10987</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2199041">
+    <string>What colours do apples have?</string>
+    <answer>
+      <string>Red</string>
+      <uri>http://www.wikidata.org/entity/Q89</uri>
+    </answer>
+    <answer>
+      <string>Green</string>
+      <uri>http://www.wikidata.org/entity/Q89</uri>
+    </answer>
+    <answer>
+      <string>Yellow</string>
+      <uri>http://www.wikidata.org/entity/Q89</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2199041">
+    <string>As what is U-morok used in dishes?</string>
+    <answer>
+      <string>Spice</string>
+      <uri>http://www.wikidata.org/entity/Q426850</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2199041">
+    <string>What is the Scoville grade of bell peppers?</string>
+    <answer>
+      <string>0</string>
+      <uri>https://www.wikidata.org/wiki/Property:P2658</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2199289">
+    <string>Is Artistís fungus an edible mushroom?</string>
+    <answer>
+      <string>no</string>
+      <uri>https://www.wikidata.org/wiki/Q774576</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2199289">
+    <string>What is cottage cheese made of?</string>
+    <answer>
+      <string>sheep milk</string>
+      <uri>https://www.wikidata.org/wiki/Q13221624</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2199289">
+    <string>What is the E number of citric acid?</string>
+    <answer>
+      <string>E330</string>
+      <uri>https://www.wikidata.org/wiki/Q159683</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2199289">
+    <string>What are the ingredients of a gin and tonic?</string>
+    <answer>
+      <string>gin</string>
+      <uri>https://www.wikidata.org/wiki/Q704357</uri>
+    </answer>
+    <answer>
+      <string>tonic water</string>
+      <uri>https://www.wikidata.org/wiki/Q704357</uri>
+    </answer>
+    <answer>
+      <string>ice cube</string>
+      <uri>https://www.wikidata.org/wiki/Q704357</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2199289">
+    <string>What are cheeses of Dutch origin?</string>
+    <answer>
+      <string>Leerdammer</string>
+      <uri>http://www.wikidata.org/entity/Q1423094</uri>
+    </answer>
+    <answer>
+      <string>Meikaas</string>
+      <uri>http://www.wikidata.org/entity/Q2872068</uri>
+    </answer>
+    <answer>
+      <string>Gouda</string>
+      <uri>http://www.wikidata.org/entity/Q593675</uri>
+    </answer>
+    <answer>
+      <string>Edam</string>
+      <uri>http://www.wikidata.org/entity/Q597473</uri>
+    </answer>
+    <answer>
+      <string>Leyden cheese</string>
+      <uri>http://www.wikidata.org/entity/Q2011347</uri>
+    </answer>
+    <answer>
+      <string>Friesian Clove</string>
+      <uri>http://www.wikidata.org/entity/Q948039</uri>
+    </answer>
+    <answer>
+      <string>Boerenkaas</string>
+      <uri>http://www.wikidata.org/entity/Q966666</uri>
+    </answer>
+    <answer>
+      <string>Maasdam cheese</string>
+      <uri>http://www.wikidata.org/entity/Q3273732</uri>
+    </answer>
+    <answer>
+      <string>Maaslander</string>
+      <uri>http://www.wikidata.org/entity/Q2339375</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2199289">
+    <string>Which chocolate bars are produced by Mars, Incorporated ?</string>
+    <answer>
+      <string>Twix</string>
+      <uri>http://www.wikidata.org/entity/Q869733</uri>
+    </answer>
+    <answer>
+      <string>Snickers</string>
+      <uri>http://www.wikidata.org/entity/Q714179</uri>
+    </answer>
+    <answer>
+      <string>Milky Way</string>
+      <uri>http://www.wikidata.org/entity/Q1752705</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2199289">
+    <string>What is the pronunciation of croissant?</string>
+    <answer>
+      <string>https://commons.wikimedia.org/wiki/File:Fr-croissant.ogg</string>
+      <uri>https://www.wikidata.org/wiki/Q207832</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2212781">
+    <string>What is the country of origin of pizza?</string>
+    <answer>
+      <string>Italy</string>
+      <uri>https://www.wikidata.org/wiki/Q177</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2212781">
+    <string>The Scoville scale was named after what person?</string>
+    <answer>
+      <string>Wilbur Scoville</string>
+      <uri>https://www.wikidata.org/wiki/Q207047</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2365677">
+    <string>What is the colour of a Granny Smith apple?</string>
+    <answer>
+      <string>Green</string>
+      <uri>https://www.wikidata.org/wiki/Q506040</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2365677">
+    <string>How many employees does Burger King have?</string>
+    <answer>
+      <string>34248</string>
+      <uri>https://www.wikidata.org/wiki/Q177054</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2365677">
+    <string>Who are the founders of Burger King?</string>
+    <answer>
+      <string>James McLamore</string>
+      <uri>https://www.wikidata.org/wiki/Q506040</uri>
+    </answer>
+    <answer>
+      <string>David Edgerton</string>
+      <uri>https://www.wikidata.org/wiki/Q506040</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2365677">
+    <string>When is World Food Day? </string>
+    <answer>
+      <string>16 October</string>
+      <uri>https://www.wikidata.org/wiki/Q465003</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2365677">
+    <string>Where do 'stroopwafels' come from?</string>
+    <answer>
+      <string>Netherlands</string>
+      <uri>https://www.wikidata.org/wiki/Q267877</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2365677">
+    <string>Where is the headquarters of Tony Chocolonely?</string>
+    <answer>
+      <string>Amsterdam, the Netherlands</string>
+      <uri>https://www.wikidata.org/wiki/Q14942622</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2365677">
+    <string>Where do hot dogs come from?</string>
+    <answer>
+      <string>Germany</string>
+      <uri>https://www.wikidata.org/wiki/Q181055</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2424835">
+    <string>What is Rebujito made of?</string>
+    <answer>
+      <string>Sherry</string>
+      <uri>https://www.wikidata.org/wiki/Q1547850</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2424835">
+    <string>What meat is the main ingredient in Ossobuco?</string>
+    <answer>
+      <string>Veal</string>
+      <uri>https://www.wikidata.org/wiki/Q1057256</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2424835">
+    <string>What kind of drink is Kefir?</string>
+    <answer>
+      <string>Fermented milk products</string>
+      <uri>https://www.wikidata.org/wiki/Q185749</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2424835">
+    <string>What kind of food is a Sachertorte?</string>
+    <answer>
+      <string>Chocolate cake</string>
+      <uri>https://www.wikidata.org/wiki/Q131442</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2424835">
+    <string>What type of dish is a Tartine?</string>
+    <answer>
+      <string>Sandwich</string>
+      <uri>https://www.wikidata.org/wiki/Q6559431</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2424835">
+    <string>When was the Basque Culinary Center Founded?</string>
+    <answer>
+      <string>2009</string>
+      <uri>https://www.wikidata.org/wiki/Q8243618</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2478579">
+    <string>What fruits are yellow?</string>
+    <answer>
+      <string>Yellow apples</string>
+      <uri>https://www.wikidata.org/entity/Q89</uri>
+    </answer>
+    <answer>
+      <string>banana</string>
+      <uri>https://www.wikidata.org/entity/Q503</uri>
+    </answer>
+    <answer>
+      <string>lemon</string>
+      <uri>https://www.wikidata.org/entity/Q1093742</uri>
+    </answer>
+    <answer>
+      <string>pineapple</string>
+      <uri>https://www.wikidata.org/entity/Q10817602</uri>
+    </answer>
+    <answer>
+      <string>mango</string>
+      <uri>https://www.wikidata.org/entity/Q169</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2478579">
+    <string>What are the main ingredients of pizza margerita?</string>
+    <answer>
+      <string>dough</string>
+      <uri>https://www.wikidata.org/entity/Q178024</uri>
+    </answer>
+    <answer>
+      <string>tomato paste</string>
+      <uri>https://www.wikidata.org/entity/Q1499073</uri>
+    </answer>
+    <answer>
+      <string>mozzarella</string>
+      <uri>https://www.wikidata.org/entity/Q14088</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2478579">
+    <string>When did MacDonalds open?</string>
+    <answer>
+      <string>1940</string>
+      <uri>https://www.wikidata.org/entity/Q18633</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2478579">
+    <string>What do cows eat?</string>
+    <answer>
+      <string>grass</string>
+      <uri>https://www.wikidata.org/entity/Q643352</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2478579">
+    <string>How many calories are there in a BK Whopper?</string>
+    <answer>
+      <string>630</string>
+      <uri>https://www.wikidata.org/entity/Q303502</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2483416">
+    <string>What country does lasagne come from?</string>
+    <answer>
+      <string>Italy</string>
+      <uri>https://www.wikidata.org/wiki/Q20034</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2483416">
+    <string>Is wine an alcoholic beverage?</string>
+    <answer>
+      <string>yes</string>
+      <uri>https://www.wikidata.org/wiki/Q282</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2483416">
+    <string>What colors can apples have?</string>
+    <answer>
+      <string>red</string>
+      <uri>https://www.wikidata.org/wiki/Q89</uri>
+    </answer>
+    <answer>
+      <string>green</string>
+      <uri>https://www.wikidata.org/wiki/Q89</uri>
+    </answer>
+    <answer>
+      <string>yellow</string>
+      <uri>https://www.wikidata.org/wiki/Q89</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2483416">
+    <string>Name the mass of a baguette</string>
+    <answer>
+      <string>250±1 gram</string>
+      <uri>https://www.wikidata.org/wiki/Q208172</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2483416">
+    <string>Does jam contain sugar?</string>
+    <answer>
+      <string>yes</string>
+      <uri>https://www.wikidata.org/wiki/Q1269</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2483416">
+    <string>Can an oven be used for baking and grilling?</string>
+    <answer>
+      <string>yes</string>
+      <uri>https://www.wikidata.org/wiki/Q36539</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2483416">
+    <string>Who is the manufacturer of nutella?</string>
+    <answer>
+      <string>Ferrero SpA</string>
+      <uri>https://www.wikidata.org/wiki/Q212193</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2483416">
+    <string>What is the ingredient of ketchup?</string>
+    <answer>
+      <string>tomato</string>
+      <uri>https://www.wikidata.org/wiki/Q178143</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2485540">
+    <string>What are Hamburgers named after?</string>
+    <answer>
+      <string>Hamburg</string>
+      <uri>http://www.wikidata.org/entity/Q1055</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2485540">
+    <string>List the ingredients of paella</string>
+    <answer>
+      <string>rice</string>
+      <uri>http://www.wikidata.org/entity/Q212121</uri>
+    </answer>
+    <answer>
+      <string>Pisum</string>
+      <uri>http://www.wikidata.org/entity/Q212121</uri>
+    </answer>
+    <answer>
+      <string>seafood</string>
+      <uri>http://www.wikidata.org/entity/Q212121</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2485540">
+    <string>What can you use sweets for?</string>
+    <answer>
+      <string>dessert</string>
+      <uri>http://www.wikidata.org/entity/Q5200157</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2485540">
+    <string>What is Swedish crisp bread called in Swedish?</string>
+    <answer>
+      <string>knäckebröd</string>
+      <uri>http://www.wikidata.org/entity/Q251981</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2485540">
+    <string>What is gravlax?</string>
+    <answer>
+      <string>salmon dish</string>
+      <uri>http://www.wikidata.org/entity/Q252630</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2485540">
+    <string>When was Gordon Ramsay born?</string>
+    <answer>
+      <string>8 November 1966</string>
+      <uri>http://www.wikidata.org/entity/Q15280</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2493403">
+    <string>What is the country of origin of apple pie?</string>
+    <answer>
+      <string>United States of America</string>
+      <uri>https://www.wikidata.org/wiki/Q1068034</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2493403">
+    <string>What is the country of origin of cookies?</string>
+    <answer>
+      <string>Iran</string>
+      <uri>https://www.wikidata.org/wiki/Q13266</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2493403">
+    <string>What is the treatment for food allergy?</string>
+    <answer>
+      <string>the drug cromolyn</string>
+      <uri>https://www.wikidata.org/wiki/Q769815</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2493403">
+    <string>What colors can an apple have?</string>
+    <answer>
+      <string>red</string>
+      <uri>http://www.wikidata.org/entity/Q89</uri>
+    </answer>
+    <answer>
+      <string>green</string>
+      <uri>http://www.wikidata.org/entity/Q89</uri>
+    </answer>
+    <answer>
+      <string>yellow</string>
+      <uri>http://www.wikidata.org/entity/Q89</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2493403">
+    <string>What material is used to make yogurt?</string>
+    <answer>
+      <string>milk</string>
+      <uri>https://www.wikidata.org/wiki/Q13317</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2493403">
+    <string>What are the general ingredients in muesli?</string>
+    <answer>
+      <string>rolled oats</string>
+      <uri>http://www.wikidata.org/entity/Q52406</uri>
+    </answer>
+    <answer>
+      <string>food grain</string>
+      <uri>http://www.wikidata.org/entity/Q52406</uri>
+    </answer>
+    <answer>
+      <string>dried fruits</string>
+      <uri>http://www.wikidata.org/entity/Q52406</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2493403">
+    <string>What is the shape of a croissant?</string>
+    <answer>
+      <string>crescent</string>
+      <uri>https://www.wikidata.org/wiki/Q207832</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2493403">
+    <string>What was the hamburger named after?</string>
+    <answer>
+      <string>Hamburg</string>
+      <uri>https://www.wikidata.org/wiki/Q6663</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2493403">
+    <string>What is the color of an orange?</string>
+    <answer>
+      <string>orange</string>
+      <uri>https://www.wikidata.org/wiki/Q13191</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2526883">
+    <string>Who was the Caesar salad named after?</string>
+    <answer>
+      <string>Caesar Cardini</string>
+      <uri>https://www.wikidata.org/wiki/Q275508</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2526883">
+    <string>What are the ingredients for a BLT sandwich?</string>
+    <answer>
+      <string>tomato</string>
+      <uri>https://www.wikidata.org/wiki/Q796270</uri>
+    </answer>
+    <answer>
+      <string>bacon</string>
+      <uri>https://www.wikidata.org/wiki/Q796270</uri>
+    </answer>
+    <answer>
+      <string>lettuce</string>
+      <uri>https://www.wikidata.org/wiki/Q796270</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2526883">
+    <string>Where does stamppot come from?</string>
+    <answer>
+      <string>Netherlands</string>
+      <uri>https://www.wikidata.org/wiki/Q1346373</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2526883">
+    <string>What do koalas eat?</string>
+    <answer>
+      <string>Eucalyptus</string>
+      <uri>https://www.wikidata.org/wiki/Q36101</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2526883">
+    <string>What are ovens used for?</string>
+    <answer>
+      <string>baking</string>
+      <uri>https://www.wikidata.org/wiki/Q36539</uri>
+    </answer>
+    <answer>
+      <string>grilling</string>
+      <uri>https://www.wikidata.org/wiki/Q36539</uri>
+    </answer>
+    <answer>
+      <string>frying</string>
+      <uri>https://www.wikidata.org/wiki/Q36539</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2526883">
+    <string>From what country does pesto originate?</string>
+    <answer>
+      <string>Italy</string>
+      <uri>https://www.wikidata.org/wiki/Q9896</uri>
+    </answer>
+  </question>
+  <question studentnumber="2542722">
+    <string>Who is the sandwich named after?</string>
+    <answer>
+      <string>John Montagu, 4th Earl of Sandwich</string>
+      <uri>https://www.wikidata.org/entity/Q28803</uri>
+    </answer>
+  </question>
+  <question studentnumber="2542722">
+    <string>What are kitchens used for?</string>
+    <answer>
+      <string>Cooking</string>
+      <uri>https://www.wikidata.org/entity/Q43164</uri>
+    </answer>
+  </question>
+  <question studentnumber="2542722">
+    <string>What is cider made of?</string>
+    <answer>
+      <string>Cider apples</string>
+      <uri>https://www.wikidata.org/entity/Q167296</uri>
+    </answer>
+  </question>
+  <question studentnumber="2542722">
+    <string>Where do brownies come from?</string>
+    <answer>
+      <string>The United States of America</string>
+      <uri>https://www.wikidata.org/entity/Q503129</uri>
+    </answer>
+  </question>
+  <question studentnumber="2542722">
+    <string>Who manufactures Coca Cola?</string>
+    <answer>
+      <string>The Coca-Cola Company</string>
+      <uri>https://www.wikidata.org/entity/Q2813</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2547082">
+    <string>What is the country of origin of sandwich?</string>
+    <answer>
+      <string>England</string>
+      <uri>https://www.wikidata.org/wiki/Q28803</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2547082">
+    <string>What is the name of the manufacturer of Nutella?</string>
+    <answer>
+      <string>Ferrero SpA</string>
+      <uri>https://www.wikidata.org/wiki/Q212193</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2547082">
+    <string>What is the country of origin of curry?</string>
+    <answer>
+      <string>India</string>
+      <uri>https://www.wikidata.org/wiki/Q164606</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2547082">
+    <string>What is used in a hamburguer?</string>
+    <answer>
+      <string>Meat</string>
+      <uri>https://www.wikidata.org/wiki/Q6663</uri>
+    </answer>
+    <answer>
+      <string>Bread roll</string>
+      <uri>https://www.wikidata.org/wiki/Q6663</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2547082">
+    <string>What is the chemical formula of water?</string>
+    <answer>
+      <string>H20</string>
+      <uri>https://www.wikidata.org/wiki/Q283</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2547082">
+    <string>What is the parent organization of Jell-O?</string>
+    <answer>
+      <string>Kraft Foods</string>
+      <uri>https://www.wikidata.org/wiki/Q1686705</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2548259">
+    <string>Who was carpaccio named after?</string>
+    <answer>
+      <string>Vittore Carpaccio</string>
+      <uri>https://www.wikidata.org/entity/Q840392</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2548259">
+    <string>When was quorn invented?</string>
+    <answer>
+      <string>1985</string>
+      <uri>https://www.wikidata.org/entity/Q2123676</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2548259">
+    <string>Whas is foie gras made of?</string>
+    <answer>
+      <string>Liver</string>
+      <uri>https://www.wikidata.org/entity/Q34807</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2548259">
+    <string>What are the ingredients of apple pie?</string>
+    <answer>
+      <string>Cooking apple</string>
+      <uri>https://www.wikidata.org/entity/Q1068034</uri>
+    </answer>
+    <answer>
+      <string>sugar</string>
+      <uri>https://www.wikidata.org/entity/Q1068034</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2548259">
+    <string>Which company invented the Big Mac?</string>
+    <answer>
+      <string>McDonald's</string>
+      <uri>https://www.wikidata.org/entity/Q506796</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2548259">
+    <string>Who was Dunkin' Donuts founded by?</string>
+    <answer>
+      <string>William Rosenberg</string>
+      <uri>https://www.wikidata.org/entity/Q847743</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2548798">
+    <string>Where does lasagne come from?</string>
+    <answer>
+      <string>Italy</string>
+      <uri>https://www.wikidata.org/wiki/Q20034</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2548798">
+    <string>What material is used for a hamburger?</string>
+    <answer>
+      <string>meat</string>
+      <uri>https://www.wikidata.org/wiki/Q6663</uri>
+    </answer>
+    <answer>
+      <string>bread roll</string>
+      <uri>https://www.wikidata.org/wiki/Q6663</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2548798">
+    <string>What are the ingredients of bread?</string>
+    <answer>
+      <string>water</string>
+      <uri>https://www.wikidata.org/wiki/Q7802</uri>
+    </answer>
+    <answer>
+      <string>flour</string>
+      <uri>https://www.wikidata.org/wiki/Q7802</uri>
+    </answer>
+    <answer>
+      <string>sodium chloride</string>
+      <uri>https://www.wikidata.org/wiki/Q7802</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2548798">
+    <string>What is the Dutch translation of meatloaf?</string>
+    <answer>
+      <string>Vleesbrood</string>
+      <uri>https://www.wikidata.org/wiki/Q3807565</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2548798">
+    <string>When was the inception of the michelin star?</string>
+    <answer>
+      <string>1926</string>
+      <uri>https://www.wikidata.org/wiki/Q20824563</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2548798">
+    <string>What is the birth name of Gordon Ramsey?</string>
+    <answer>
+      <string>Gordon James Ramsay</string>
+      <uri>https://www.wikidata.org/wiki/Q15280</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2548798">
+    <string>What is the unicode character of pizza?</string>
+    <answer>
+      <string>🍕</string>
+      <uri>https://www.wikidata.org/wiki/Q177</uri>
+    </answer>
+  </question>
+  <question studentnumber="s268217">
+    <string>Where was Gazpacho invented?</string>
+    <answer>
+      <string>Spain</string>
+      <uri>https://www.wikidata.org/wiki/Q202677</uri>
+    </answer>
+  </question>
+  <question studentnumber="s268217">
+    <string>What ingredients are in muesli?</string>
+    <answer>
+      <string>rolled oats</string>
+      <uri>https://www.wikidata.org/wiki/Q52406</uri>
+    </answer>
+    <answer>
+      <string>food grain</string>
+      <uri>https://www.wikidata.org/wiki/Q52406</uri>
+    </answer>
+    <answer>
+      <string>dried fruit</string>
+      <uri>https://www.wikidata.org/wiki/Q52406</uri>
+    </answer>
+  </question>
+  <question studentnumber="s268217">
+    <string>What pepper is used in sambal?</string>
+    <answer>
+      <string>Chili pepper</string>
+      <uri>https://www.wikidata.org/wiki/Q1056554</uri>
+    </answer>
+  </question>
+  <question studentnumber="s268217">
+    <string>What is liquorice a subclass of?</string>
+    <answer>
+      <string>Confections</string>
+      <uri>https://www.wikidata.org/wiki/Q138811</uri>
+    </answer>
+  </question>
+  <question studentnumber="s268217">
+    <string>What does whipped cream contain?</string>
+    <answer>
+      <string>Crème fraîche</string>
+      <uri>https://www.wikidata.org/wiki/Q625957</uri>
+    </answer>
+  </question>
+  <question studentnumber="s268217">
+    <string>What is crème brûlée made of?</string>
+    <answer>
+      <string>Custard</string>
+      <uri>https://www.wikidata.org/wiki/Q312839</uri>
+    </answer>
+    <answer>
+      <string>Caramel</string>
+      <uri>https://www.wikidata.org/wiki/Q312839</uri>
+    </answer>
+  </question>
+  <question studentnumber="s268217">
+    <string>Where was the fortune cookie invented?</string>
+    <answer>
+      <string>United States of America</string>
+      <uri>https://www.wikidata.org/wiki/Q782794</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2569434">
+    <string>Is a tomato a fruit?</string>
+    <answer>
+      <string>Yes</string>
+      <uri>https://www.wikidata.org/wiki/Q20638126</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2569434">
+    <string>Who is the Scoville scale named after?</string>
+    <answer>
+      <string>Wilbur Scoville</string>
+      <uri>https://www.wikidata.org/wiki/Q207047</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2569434">
+    <string>Where is the Hertog Jan brewery located?</string>
+    <answer>
+      <string>Arcen, the Netherlands</string>
+      <uri>https://www.wikidata.org/wiki/Q2239073</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2576597">
+    <string>What color is a lemon?</string>
+    <answer>
+      <string>lemon</string>
+      <uri>https://www.wikidata.org/wiki/Q1093742</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2576597">
+    <string>What are the ingredients of a Long Island Icetea?</string>
+    <answer>
+      <string>Gin</string>
+      <uri>https://www.wikidata.org/wiki/Q1052769</uri>
+    </answer>
+    <answer>
+      <string>Tequila</string>
+      <uri>https://www.wikidata.org/wiki/Q1052769</uri>
+    </answer>
+    <answer>
+      <string>Vodka</string>
+      <uri>https://www.wikidata.org/wiki/Q1052769</uri>
+    </answer>
+    <answer>
+      <string>White rum</string>
+      <uri>https://www.wikidata.org/wiki/Q1052769</uri>
+    </answer>
+    <answer>
+      <string>Triple sec</string>
+      <uri>https://www.wikidata.org/wiki/Q1052769</uri>
+    </answer>
+    <answer>
+      <string>Gomme syrup</string>
+      <uri>https://www.wikidata.org/wiki/Q1052769</uri>
+    </answer>
+    <answer>
+      <string>Lemon juice</string>
+      <uri>https://www.wikidata.org/wiki/Q1052769</uri>
+    </answer>
+    <answer>
+      <string>Cola</string>
+      <uri>https://www.wikidata.org/wiki/Q1052769</uri>
+    </answer>
+    <answer>
+      <string>Highball glass</string>
+      <uri>https://www.wikidata.org/wiki/Q1052769</uri>
+    </answer>
+    <answer>
+      <string>Lemon spiral</string>
+      <uri>https://www.wikidata.org/wiki/Q1052769</uri>
+    </answer>
+    <answer>
+      <string>Ice cube</string>
+      <uri>https://www.wikidata.org/wiki/Q1052769</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2579405">
+    <string>Who invented the potato chip?</string>
+    <answer>
+      <string>George Crum</string>
+      <uri>https://www.wikidata.org/wiki/Q173265</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2579405">
+    <string>Who founded KFC?</string>
+    <answer>
+      <string>Colonel Sanders</string>
+      <uri>https://www.wikidata.org/wiki/Q524757</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2579405">
+    <string>From what country is Mie Goreng??</string>
+    <answer>
+      <string>Indonesia</string>
+      <uri>https://www.wikidata.org/wiki/Q1188729</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2579405">
+    <string>Does soylent have an official website?</string>
+    <answer>
+      <string>yes</string>
+      <uri>http://www.wikidata.org/wiki/Q13384640</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2580748">
+    <string>What country is Iglo frozen foods from?</string>
+    <answer>
+      <string>Germany</string>
+      <uri>https://www.wikidata.org/wiki/Q459544</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2580748">
+    <string>What is the opposite of veganism?</string>
+    <answer>
+      <string>Carnism</string>
+      <uri>https://www.wikidata.org/wiki/Q181138</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2580748">
+    <string>What is a raisin?</string>
+    <answer>
+      <string>Dried grape</string>
+      <uri>https://www.wikidata.org/wiki/Q13186</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2583623">
+    <string>Who was the presenter of Heel Holland Bakt in 2016?</string>
+    <answer>
+      <string>André van Duin</string>
+      <uri>https://www.wikidata.org/wiki/Q21693720</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2583623">
+    <string>What does tofu consist of?</string>
+    <answer>
+      <string>soy milk</string>
+      <uri>https://www.wikidata.org/wiki/Q177378</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2583623">
+    <string>What country does kebab comes from?</string>
+    <answer>
+      <string>Turkey</string>
+      <uri>https://www.wikidata.org/wiki/Q179010</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2588048">
+    <string>Of which classes is a cucumber a subclass?</string>
+    <answer>
+      <string>Vegetable</string>
+      <uri>https://www.wikidata.org/wiki/Q2735883</uri>
+    </answer>
+    <answer>
+      <string>Fruit</string>
+      <uri>https://www.wikidata.org/wiki/Q2735883</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2588048">
+    <string>Which ingredients do you need to make tiramisu?</string>
+    <answer>
+      <string>Coffee</string>
+      <uri>https://www.wikidata.org/wiki/Q131582</uri>
+    </answer>
+    <answer>
+      <string>Mascarpone</string>
+      <uri>https://www.wikidata.org/wiki/Q131582</uri>
+    </answer>
+    <answer>
+      <string>Ladyfinger</string>
+      <uri>https://www.wikidata.org/wiki/Q131582</uri>
+    </answer>
+    <answer>
+      <string>Cocoa solids</string>
+      <uri>https://www.wikidata.org/wiki/Q131582</uri>
+    </answer>
+    <answer>
+      <string>Egg</string>
+      <uri>https://www.wikidata.org/wiki/Q131582</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2588382">
+    <string>What is the color of milk?</string>
+    <answer>
+      <string>white</string>
+      <uri>https://www.wikidata.org/wiki/Q8495</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2588382">
+    <string>What is the use of an oven?</string>
+    <answer>
+      <string>baking</string>
+      <uri>https://www.wikidata.org/wiki/Q36539</uri>
+    </answer>
+    <answer>
+      <string>grilling</string>
+      <uri>https://www.wikidata.org/wiki/Q36539</uri>
+    </answer>
+    <answer>
+      <string>frying</string>
+      <uri>https://www.wikidata.org/wiki/Q36539</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2588382">
+    <string>Who produces the Big Mac hamburger?</string>
+    <answer>
+      <string>McDonald's</string>
+      <uri>https://www.wikidata.org/wiki/Q506796</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2593386">
+    <string>What is the chemical formula of sucrose?</string>
+    <answer>
+      <string>C12H22O11</string>
+      <uri>https://www.wikidata.org/entity/Q4027534</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2593386">
+    <string>What is Pepsi named after?</string>
+    <answer>
+      <string>pepsin</string>
+      <uri>https://www.wikidata.org/entity/Q47719</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2593386">
+    <string>Whom is Whiskas owned by?</string>
+    <answer>
+      <string>Mars, Incorporated</string>
+      <uri>https://www.wikidata.org/entity/Q163355</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2605376">
+    <string>From what country did Devil's food cakes originate?</string>
+    <answer>
+      <string>The United States of America</string>
+      <uri>http://www.wikidata.org/entity/Q29477</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2605376">
+    <string>What is flour made of?</string>
+    <answer>
+      <string>food grain</string>
+      <uri>http://www.wikidata.org/entity/Q36465</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2605376">
+    <string>When was the inception of The Food Network?</string>
+    <answer>
+      <string>1993</string>
+      <uri>http://www.wikidata.org/entity/Q1435969</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2605376">
+    <string>What was the net profit of Mc Donald's in 2015?</string>
+    <answer>
+      <string>4,529,300,000 United States dollar</string>
+      <uri>http://www.wikidata.org/entity/Q38076</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2605376">
+    <string>What are the materials used in bread?</string>
+    <answer>
+      <string>water</string>
+      <uri>http://www.wikidata.org/entity/Q7802</uri>
+    </answer>
+    <answer>
+      <string>flour</string>
+      <uri>http://www.wikidata.org/entity/Q7802</uri>
+    </answer>
+    <answer>
+      <string>salt</string>
+      <uri>http://www.wikidata.org/entity/Q7802</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2605376">
+    <string>What is the material used in Parmigiano?</string>
+    <answer>
+      <string>cow milk</string>
+      <uri>http://www.wikidata.org/entity/Q155922</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2672863">
+    <string>Who is the producer of Mountain Dew?</string>
+    <answer>
+      <string>PepsiCo</string>
+      <uri>https://www.wikidata.org/wiki/Q896</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2672863">
+    <string>Wat is margarine made of?</string>
+    <answer>
+      <string>vegetable oil</string>
+      <uri>https://www.wikidata.org/wiki/Q4287</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2672863">
+    <string>What is used to make a Bloody Mary?</string>
+    <answer>
+      <string>vodka</string>
+      <uri>https://www.wikidata.org/wiki/Q207711</uri>
+    </answer>
+    <answer>
+      <string>tomato juice</string>
+      <uri>https://www.wikidata.org/wiki/Q207711</uri>
+    </answer>
+    <answer>
+      <string>lemon juice</string>
+      <uri>https://www.wikidata.org/wiki/Q207711</uri>
+    </answer>
+    <answer>
+      <string>Worcestershire sauce</string>
+      <uri>https://www.wikidata.org/wiki/Q207711</uri>
+    </answer>
+    <answer>
+      <string>Tabasco sauce</string>
+      <uri>https://www.wikidata.org/wiki/Q207711</uri>
+    </answer>
+    <answer>
+      <string>celery salt</string>
+      <uri>https://www.wikidata.org/wiki/Q207711</uri>
+    </answer>
+    <answer>
+      <string>pepper</string>
+      <uri>https://www.wikidata.org/wiki/Q207711</uri>
+    </answer>
+    <answer>
+      <string>highball glass</string>
+      <uri>https://www.wikidata.org/wiki/Q207711</uri>
+    </answer>
+    <answer>
+      <string>celery stalk</string>
+      <uri>https://www.wikidata.org/wiki/Q207711</uri>
+    </answer>
+    <answer>
+      <string>lemon wedge</string>
+      <uri>https://www.wikidata.org/wiki/Q207711</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2675846">
+    <string>What is Gouda cheese named after?</string>
+    <answer>
+      <string>Gouda</string>
+      <uri>https://www.wikidata.org/wiki/Q593675</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2675846">
+    <string>What does a pancake consist of?</string>
+    <answer>
+      <string>batter</string>
+      <uri>http://www.wikidata.org/wiki/Q44541</uri>
+    </answer>
+    <answer>
+      <string>milk</string>
+      <uri>https://www.wikidata.org/wiki/Q44541</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2675846">
+    <string>Who manufactures Heineken?</string>
+    <answer>
+      <string>Heineken International</string>
+      <uri>https://www.wikidata.org/wiki/Q854383</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2675846">
+    <string>When was Kentucky Fried Chicken founded?</string>
+    <answer>
+      <string>1930</string>
+      <uri>https://www.wikidata.org/wiki/Q524757</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2675846">
+    <string>Where was Gordon Ramsay born?</string>
+    <answer>
+      <string>Johnstone</string>
+      <uri>https://www.wikidata.org/wiki/Q15280</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2678152">
+    <string>What quality does coffee have?</string>
+    <answer>
+      <string>bitterness</string>
+      <uri>https://www.wikidata.org/wiki/Q1517187</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2689162">
+    <string>Is a tompouce the same as a mille-feuille?</string>
+    <answer>
+      <string>No</string>
+      <uri>https://www.wikidata.org/wiki/Q17137076</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2695332">
+    <string>Give an image of a cake</string>
+    <answer>
+      <string>https://commons.wikimedia.org/wiki/File:Pound_layer_cake.jpg</string>
+      <uri>https://www.wikidata.org/wiki/Q13276</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2695332">
+    <string>What ingredients does cake contain?</string>
+    <answer>
+      <string>Sugar</string>
+      <uri>https://www.wikidata.org/wiki/Q13276</uri>
+    </answer>
+    <answer>
+      <string>Flour</string>
+      <uri>https://www.wikidata.org/wiki/Q13276</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2701227">
+    <string>Does water contain sugar?</string>
+    <answer>
+      <string>No</string>
+      <uri>https://www.wikidata.org/wiki/Q283</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2703122">
+    <string>Is a coconut a fruit?</string>
+    <answer>
+      <string>Yes</string>
+      <uri>https://www.wikidata.org/wiki/Q3342808</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2703122">
+    <string>To what cuisine does borscht belong?</string>
+    <answer>
+      <string>Russian cuisine</string>
+      <uri>https://www.wikidata.org/wiki/Q4551</uri>
+    </answer>
+  </question>
+  <question studentnumber="s2710560">
+    <string>Is mayonnaise an emlusion or a suspension?</string>
+    <answer>
+      <string>emulsion</string>
+      <uri>https://www.wikidata.org/wiki/Q167893</uri>
+    </answer>
+  </question>
+</questions>
