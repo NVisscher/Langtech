@@ -21,13 +21,40 @@ knownprops = {
 	"number of households": "wdt:P1538"
 }
 
+# Pattern format: (regex, [list of positions, in order], [evaluation prefix])
+patterns = [
+	('What (.+) (does|do|can) (.+) have?', [0, 2], []),
+	('When was (.+) born?', [0], ["date of birth"]),
+	('W(ho|hat)( is| are|\'s) (.+)\?', [2], []),
+	('W(ho|hat)( is| are|\'s) the (.+) in (.+)\?', [2, 3], []),
+	('What is (a|an) (.+)\?', [1], ["subclass of"]),
+	('What is (\S+)\?', [0], ["instance of"]),
+	('In (what|which) (.+) (do|does) (.+) (come|exist)?', [1, 3], []),
+	('(Where|What country|What place) (do|does) (.+) (originate|come) from?', [2], ["country of origin"]),
+	('Wh(at|ich) (.+)was (.+) named after?', [2], ["named after"]),
+	('After wh(at|ich|om) (.+)was (.+) named?', [2], ["named after"]),
+	('What( is|\'s) (.+) used for?', [1], ["use"]),
+	('What (do|does) (.+) consist of?', [1], ["has part"]),
+	('(What|Which) (.+) is (also known|known) as (.+)?', [3], ["known as"]),
+	('What kind of (.+) is (.+)?', [1], ["subclass of"])
+	]
+
+knownagents = {
+	"invent": "inventor"
+	}
+
+howmanyhaspatterns = [
+	'How many (.+) (does|do) (.+) have\?',
+	'How many (.+) are there (in|at|with) (.+)\?',
+	'What is the number of (.+) (in|at|of) (.+)\?']
+
 # Explode function (like in PHP)
 def explodeOf(text):
 	return re.split(' of ', text)
 
 def cleanSubjectList(data):
 	# Remove 'the' and 'a' at beginning of an item
-	p = re.compile('(^the\s*|^a\s*)')
+	p = re.compile('(^the \s*|^a(|n) \s*)')
 	output = []
 	for item in data:
 		output.append(p.sub('', item))
@@ -36,10 +63,22 @@ def cleanSubjectList(data):
 	output2 = str.join(',', output2).replace("country,origin", "country of origin").split(",")
 	output2 = str.join(',', output2).replace("place,birth", "place of birth").split(",")
 	output2 = str.join(',', output2).replace("number,households", "number of households").split(",")
+	output2 = str.join(',', output2).replace("number,employees", "number of employees").split(",")
 	return output2
+
+# Very complicated function to turn "found" into "founder"
+def findAgent(lemma):
+	if lemma in knownagents:
+		return knownagents[lemma]
+	# Unknown agent. Try the generic way.
+	if lemma[-1] == 'e':
+		return lemma + "r"
+	return lemma + "er"
 
 # Find an entity. Very important
 def findEntity(description):
+	if description == '':
+		return []
 	try:
 		id = knownentities[description]
 		return [id]
@@ -60,6 +99,8 @@ def findEntity(description):
 
 # Find a property. Also very important
 def findProperty(description):
+	if description == '':
+		return []
 	try:
 		id = knownprops[description]
 		return [id]
@@ -114,6 +155,9 @@ def evaluateList(x, y):
 		if y == []:
 			return []
 		return evaluateList(x, y)
+	# Special case: Y has been resolved, and X is "number". REPLACED.
+	#if x == ["number"]:
+	#	return [str(len(y))]
 	# Finally: If partially resolved: Resolve last part of x as property of y, and replace y
 	props = findProperty(x[-1])
 	x.pop()
@@ -134,14 +178,18 @@ def evaluateList(x, y):
 	else:
 		return evaluateList(x, output)
 
-# Parse a single question
-def parseWhatis(question):
+# Parse a what-is question. Deprecated and replaced by generic pattern.
+def parseWhatis(question, doc):
 	# Case: What is ...
-	p = re.compile('W(ho|hat) is (.+)\?')
-	m = p.match(question)
-	if m is None:
+	p = re.compile('W(ho|hat) (is|are) (.+)\?')
+	m = p.findall(question)
+	if len(m) < 1:
 		return []
-	subject = m.group(2)
+	# At least 3 words have to be matched
+	if len(re.split(" ", m[0][2])) < 3:
+		return []
+	# Convert to lemma forms
+	subject = str.join("", doc[2:-1].lemma_)
 	# We now get in 'subject': the name of the queen of England
 	subjectlist = explodeOf(subject)
 	# We now get: ['the name', 'the queen', 'England']
@@ -154,7 +202,105 @@ def parseWhatis(question):
 		return answer
 
 
-def get_answer_s2020947(question, nlp):
+def parseWhodid(question, doc):
+	p = re.compile('W(ho|hat) (.+)\?')
+	m = p.match(question)
+	if m is None:
+		return []
+	if doc[1].pos_ != 'VERB' or doc[1].lemma_ == 'be' or doc[1].lemma_ == 'do':
+		return []
+	# Who Xed Y? => Who is the X-or of Y?
+	y = explodeOf(str.join("", doc[2:-1].lemma_))
+	subjectlist = [findAgent(str(doc[1].lemma_))] + cleanSubjectList(y)
+	answer = evaluateList(subjectlist, [])
+	return answer
+
+def parseImperative(question, doc):
+	if doc[0].pos_ != 'VERB' or str(doc[0]).lower() != doc[0].lemma_:
+		return []
+	subjectlist = cleanSubjectList(explodeOf(str.join("", doc[1:].lemma_)))
+	#print("Imp:", subjectlist)
+	answer = evaluateList(subjectlist, [])
+	return answer
+
+def parseHowManyHave(question, doc):
+	# Not Implemented Yet
+	answers = []
+	for pattern in howmanyhaspatterns:
+		p = re.compile(pattern)
+		m = p.findall(question)
+		for match in m:
+			print(match)
+			x = match[0] # Example: employees
+			y = cleanSubjectList(explodeOf(match[2])) # Example: Burger King
+			# Try "X" of "Y" and hope to find a number
+			answer = evaluateList([x] + y, [])
+			for item in answer:
+				try:
+					val = int(item)
+					answers.append(val)
+				except ValueError:
+					pass
+			# Try "Number of X" of "Y" and hope to find a number
+			x = "number of " + match[0]
+			answer = evaluateList([x] + y, [])
+			for item in answer:
+				try:
+					val = int(item)
+					answers.append(val)
+				except ValueError:
+					pass
+			# Try the lemma of X with Y, and count the results
+			x = findLemmaForms(doc, match[0])
+			answer = evaluateList([x] + y, [])
+			if len(answer) > 0:
+				answers.append(len(answer))
+	if answers == []:
+		return []
+	return [str(max(answers))]
+
+# Retrieves lemma forms from the parsed document, and replaces them in the 'raw' input
+def findLemmaForms(doc, raw):
 	output = []
-	output = output + parseWhatis(question)
+	words = re.split(' ', raw)
+	for word in words:
+		for docitem in doc:
+			if str(docitem) == word:
+				output.append(docitem.lemma_)
+				break
+	return " ".join(output)
+
+def parseGeneric(question, doc):
+	answers = []
+	for pattern in patterns:
+		(repattern, positions, prefix) = pattern
+		p = re.compile(repattern)
+		m = p.findall(question)
+		for match in m:
+			# Populate subject list in order
+			subjectlist = []
+			for pos in positions:
+				chunk = ""
+				# Workaround for quirk in Python3 regex
+				if type(match) is tuple:
+					chunk = match[pos]
+				else:
+					chunk = match
+				chunk = findLemmaForms(doc, chunk)
+				subjectlist = subjectlist + explodeOf(chunk)
+			subjectlist = prefix + cleanSubjectList(subjectlist)
+			answers = answers + evaluateList(subjectlist, [])
+	return answers
+
+
+def get_answer_s2020947(question, nlp):
+	nonewline = question.replace('\n', '')
+	doc = nlp(nonewline)
+	
+	output = []
+	#output = output + parseWhatis(question, doc)
+	output = output + parseWhodid(question, doc)
+	output = output + parseImperative(question, doc)
+	output = output + parseHowManyHave(question, doc)
+	output = output + parseGeneric(question, doc)
 	return output
