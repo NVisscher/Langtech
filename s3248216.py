@@ -1,24 +1,17 @@
 #!/usr/bin/python3
 
-import os
-
 import time
 
-# We're not using a user-config.py. The only way to disable this is to set PYWIKIBOT2_NO_USER_CONFIG.
-# More info here: https://github.com/wikimedia/pywikibot-core/blob/master/pywikibot/config2.py
-# Please do not remove or move this line.
-os.environ["PYWIKIBOT2_NO_USER_CONFIG"] = "2"
+import spacy
+import requests
 
-import pywikibot
-from pywikibot.data.sparql import SparqlQuery
-from pywikibot.data import api
-
-site = pywikibot.Site("wikidata", "wikidata")
+from SPARQLWrapper import SPARQLWrapper, JSON
 
 
-# Executes a query against the SPARQL endpoint using pywikibot.
 def execute_query(x_id, y_id):
-    query = """SELECT DISTINCT  ?propertyLabel
+    sparql = SPARQLWrapper("https://query.wikidata.org/sparql")
+
+    sparql.setQuery("""SELECT DISTINCT  ?propertyLabel
                WHERE
                  {                                    
                    ?article  schema:about       ?item ;
@@ -32,34 +25,42 @@ def execute_query(x_id, y_id):
                   { bd:serviceParam
                    wikibase:language  "en" 
                   }
-               } LIMIT 1"""
-    sparql = SparqlQuery()
+               } LIMIT 1""")
 
-    # Send a request to the API using pywikibot.
-    result = sparql.select(query)
+    sparql.setReturnFormat(JSON)
+    results = sparql.query().convert()
 
-    if len(result) > 0:
-        if result[0]["propertyLabel"] is not None:
-            return [result[0]["propertyLabel"]]
-        else:
-            return []
-    else:
-        return []
+    answer = []
+    for result in results["results"]["bindings"]:
+        answer.append(result["propertyLabel"]["value"])
+
+    return answer
 
 
-def get_data_from_api(params):
-    request = api.Request(site=site, **params)
-    return request.submit()
+def get_entity_from_id(id):
+    url = "https://www.wikidata.org/w/api.php"
+    params = {"action": "wbgetentities", "ids": "" + id + "", "format": "json"}
+
+    json = requests.get(url, params).json()
+    return json
+
+
+def search_entities(query):
+    url = "https://www.wikidata.org/w/api.php"
+    params = {"action": "wbsearchentities", "search": "" + query + "", "language": "en", "format": "json"}
+
+    json = requests.get(url, params).json()
+    return json
 
 
 # Get the properties (and their labels) of an entity and match it against x.
 def get_properties(x, y_id):
-    properties = get_data_from_api({"action": "wbgetentities", "ids": y_id})
+    properties = get_entity_from_id(y_id)
 
     # Get the labels of the properties.
     for property_id in properties["entities"][y_id]["claims"]:
 
-        label = get_data_from_api({"action": "wbgetentities", "ids": property_id})
+        label = get_entity_from_id(property_id)
 
         # Return part of the URI if there is a match (P***).
         if x in label["entities"][property_id]["labels"]["en"]["value"]:
@@ -82,7 +83,7 @@ def get_properties(x, y_id):
 
 # Find items for y and get their properties.
 def get_answer(x, y):
-    items = get_data_from_api({"action": "wbsearchentities", "language": "en", "limit": "50", "search": y})
+    items = search_entities(y)
 
     for item in items["search"]:
         x_id = get_properties(x, item["title"])
@@ -102,10 +103,14 @@ def pre_processor(input, nlp):
     doc = nlp(input)
 
     found_x = False
+    found_y = False
 
     for ent in doc:
-        if (ent.tag_ == "NN" or ent.tag_ == "NNP" or ent.tag_ == "NNS" or ent.tag_ == "NNPS") and found_x:
+        if (
+                        ent.tag_ == "NN" or ent.tag_ == "NNP" or ent.tag_ == "NNS" or ent.tag_ == "NNPS") and found_x and not found_y:
             y = ent.text
+
+            found_y = True
         if (ent.tag_ == "NN" or ent.tag_ == "NNS" or ent.tag_ == "NNP") and not found_x:
             x.append(ent.text)
             found_x = True
