@@ -98,25 +98,55 @@ def get_answer(x, y):
 # Find x and y, and make the input ready for further processing.
 def pre_processor(input, nlp):
     x = []
-    y = None
+    y = []
 
     doc = nlp(input)
 
     found_x = False
     found_y = False
 
-    for ent in doc:
-        if (
-                        ent.tag_ == "NN" or ent.tag_ == "NNP" or ent.tag_ == "NNS" or ent.tag_ == "NNPS") and found_x and not found_y:
-            y = ent.text
+    start_x = False
+    start_y = False
 
-            found_y = True
-        if (ent.tag_ == "NN" or ent.tag_ == "NNS" or ent.tag_ == "NNP") and not found_x:
-            x.append(ent.text)
-            found_x = True
+    found_of_x = False
+
+    for ent in doc:
+
+        print(ent, ent.tag_)
+
+        if found_x is False:
+            if ent.tag_ == "NN" or ent.tag_ == "NNS" or ent.tag_ == "NNP":
+                x.append(ent.text)
+
+                start_x = True
+
+            else:
+                if ent.tag_ == "IN":
+
+                    if found_of_x is False:
+
+                        x.append(ent.text)
+                        found_of_x = True
+                    else:
+                        found_x = True
+        else:
+            if start_x is True:
+                found_x = True
+
+        if found_y is False and found_x is True:
+            if ent.tag_ == "IN" and len(y) is 0:
+                continue
+
+            if ent.tag_ == "NN" or ent.tag_ == "NNS" or ent.tag_ == "NNP" or ent.tag_ == "IN":
+                y.append(ent.text)
+
+                start_y = True
+            else:
+                if start_y is True:
+                    found_y = True
 
     if x is not None and y is not None:
-        return [" ".join(x).strip().lower(), y.strip().lower()]
+        return [" ".join(x).strip().lower(), " ".join(y).strip().lower()]
     else:
         return None
 
