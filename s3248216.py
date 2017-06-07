@@ -25,7 +25,7 @@ def execute_query(x_id, y_id):
                   { bd:serviceParam
                    wikibase:language  "en" 
                   }
-               } LIMIT 1""")
+               }""")
 
     sparql.setReturnFormat(JSON)
     results = sparql.query().convert()
