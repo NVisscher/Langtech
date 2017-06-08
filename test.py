@@ -32,7 +32,7 @@ def printStats():
     print("####")
     print("Total:", total)
     print("Correct:", correct, "(", float(correct) / float(total), "%)")
-    print("####")
+    print("####\n")
 
 
 for item in items:
@@ -45,10 +45,23 @@ for item in items:
         expectedoutput.append(answer.getElementsByTagName('string')[0].firstChild.nodeValue)
     expectedoutput = list(set(expectedoutput))
     # Run the question.
-    p1 = get_answer_s2020947(question, nlp)
-    p2 = get_answer_s2576597(question, nlp)
-    p3 = get_answer_s2995263(question, nlp)
-    p4 = get_answer_s3248216(question, nlp)
+    p1 = p2 = p3 = p4 = []
+    try:
+      p1 = get_answer_s2020947(question, nlp)
+    except:
+      print("Exception in s2020947")
+    try:
+      p2 = get_answer_s2576597(question, nlp)
+    except:
+      print("Exception in s2576597")
+    try:
+      p3 = get_answer_s2995263(question, nlp)
+    except:
+      print("Exception in s2995263")
+    try:
+      p4 = get_answer_s3248216(question, nlp)
+    except:
+      print("Exception in s3248216")
     answers = list(set(p1 + p2 + p3 + p4))
     if answers == expectedoutput:
         correct = correct + 1
