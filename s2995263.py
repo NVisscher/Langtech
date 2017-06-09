@@ -5,7 +5,7 @@ import requests
 import re
 import json
 import spacy
-from sharedcode import*
+#from sharedcode import*
 
 def get_answer_s2995263(question, nlp):
 	nonewline = question.replace('\n', '')
@@ -56,18 +56,19 @@ def main(argv):
 				print("yes")
 			else:
 				print("no")
-		elif prop != None:
-			answer = createAndFireQuery(prop, ent)
-		elif ent!=None:
-			answer = descriptionQuery(ent)
+		else: 
+			if prop != None:
+				answer = createAndFireQuery(prop, ent)
+			elif ent!=None:
+				answer = descriptionQuery(ent)
+				if not answer:
+					print("cannot find description")
+					continue
 			if not answer:
-				print("cannot find description")
-				continue
-		if not answer:
-			print("Either I did not understand your question or the answer is not known by Wikidata. Sorry.")
-		else:
-			for item in answer:
-				print(item)
+				print("Either I did not understand your question or the answer is not known by Wikidata. Sorry.")
+			else:
+				for item in answer:
+					print(item)
 					
 knownentities={
 	"male": "Q6581097",
@@ -145,11 +146,27 @@ def createAndFireQuery(prop, ent):
 				return outcome
 	return outcome
 
+def entityList(ent):
+	ret = []
+	if ent in knownentities:
+		ret.append(knownentities[ent])
+	#API
+	ret.append(searchIdEnt(ent))
+	#Anchor texts
+	uriEnt = searchWithAnchorText(ent)	#Find the uri of the entity using Wikipedia anchor text
+	for x in uriEnt:
+		print('x = ', x)
+		ret.append(searchEntity(x)) #Find the Q number of the uri found above
+	if not ret:
+		print("We cannot find \'" + ent)
+		return []
+	return ret
+
 #Function to create and fire a yes/no query
 def yesnoQuery(prop, ent, value):
 	Qprop = []
-	Qent = []
-	Qval = []
+	Qent = entityList(ent)
+	Qval = entityList(value)
 	outcome = []
 	Qprop.extend(searchIdProp(prop)) #Find the Q number of the property 
 	if prop == None:
@@ -160,31 +177,7 @@ def yesnoQuery(prop, ent, value):
 			Qprop.extend(searchIdProp(x))
 
 			
-	#Qent = str(searchIdEnt(ent)) #Only need this when using wikidataAPI instead of wikipedia anchor texts
-	#Qval = str(searchIdEnt(value)) #Only need this when using wikidataAPI instead of wikipedia anchor texts
-	uriEnt = searchWithAnchorText(ent)	#Find the uri of the entity using Wikipedia anchor text
-	if uriEnt == 'empty':
-		Qent == searchIdEnt(ent)
-		if not uriEnt:
-			print("We cannot find \'" + ent)
-			return []
-	else:
-		for x in uriEnt:
-			Qent.append(searchEntity(x)) #Find the Q number of the uri found above
-	uriVal = searchWithAnchorText(value)	#Find the uri of the entity using Wikipedia anchor text
-	if uriVal == 'empty':
-		uriVal = searchIdEnt(value)
-		if not uriVal:
-			print("We cannot find \'" + value )
-			return []
-	else:
-		if value in knownentities:
-			Qval.append(knownentities[value])
-			#print(Qval)
-		for x in uriVal:
-			#print(x)
-			Qval.append(searchEntity(x)) #Find the Q number of the uri found above
-
+	print('asking query :', Qent, Qval, Qprop)
 	for ent in Qent:
 		for val in Qval:
 			for prop in Qprop:
@@ -192,11 +185,11 @@ def yesnoQuery(prop, ent, value):
 				wdQent = 'wd:'+ ent
 				wdtQprop = 'wdt:'+prop
 				url = 'https://query.wikidata.org/sparql'
-				query = '''ASK {''' +wdQent + ' ' + wdtQprop + ' ' + wdQval+ '''}'''
+				query = '''ASK {''' +wdQent + ' ' + '?free' + ' ' + wdQval+ '''}'''
 				data = requests.get(url,
 					params={'query': query, 'format': 'json'}).json()
 				outcome = data['boolean']
-				print(query, outcome)
+				#print(query, outcome)
 				if outcome:
 					return outcome
 	return outcome
@@ -215,7 +208,7 @@ def searchWithAnchorText(ent):
 				uris.append(x[1]) 
 				frequencies.append(int(x[2])) 
 	if not frequencies: #the word is not found in the anchor texts
-		return 'empty'
+		return []
 #	freq = max(frequencies) #Find the most common meaning
 #	max_index = frequencies.index(freq)	
 #	uri = uris[max_index
@@ -287,6 +280,7 @@ def findItems(result):
 	stype = 'else'
 	if result[0].lemma_ == 'be' or result[0].lemma_ == 'do':
 		print('This is a yes-no question')
+		#Type: is barbecuing a cooking technique? -> alle values doorzoeken.
 		for x in result:
 			if x.dep_=='ROOT' and (x.lemma_=='contain' or x.lemma_ == 'have'):
 				stype = 'contain'
@@ -300,19 +294,25 @@ def findItems(result):
 					for x in result:
 						if x.head == w and x.dep_ == 'attr':
 							prop = x.lemma_
+							prop = getFullEntity(x)
+							print('x is now: ', prop)
 						if x.head == w and (x.dep_ == 'nsubj' or x.dep_ == 'acomp'):
 							if x.pos == 'PROPN':
 								value = x.text
 							else:
 								value = x.lemma_
+							
 						if x.dep_ == 'pobj':
 							ent = x.text
-							for y in x.subtree:
-								print(y.lemma_)
-								if (y.pos_ == 'NOUN' or y.pos_ == 'PROPN'):
-									if y.pos_ == 'PROPN': # a proper name
-										ent  = ' '.join(compoundName(y))
-										print('ent: '+ ent)
+							ent = getFullEntity(x)
+							print('x is now: ', ent)
+							#for y in x.subtree:
+							#	print(y.lemma_)
+							#	if (y.pos_ == 'NOUN' or y.pos_ == 'PROPN' or y.dep_ == 'compound'):
+									#if y.pos_ == 'PROPN': # a proper name
+							#		ent  = ' '.join(compoundName(y))
+							#		print('ent: '+ ent)
+								
 				if stype == 'contain':
 					print('this is a contain sentence')
 					for x in result:
@@ -343,8 +343,7 @@ def findItems(result):
 	#									print('value: '+value
 						if x.head == w and (x.dep_ == 'acomp' or x.dep_ == 'dobj'):
 							value = x.lemma_		
-
-				if ent == None:
+				if ent == None: # Is an apple fruit?
 					print('before: '+ prop,ent,value)
 					ent = value
 					value = prop
@@ -435,6 +434,17 @@ def findItems(result):
 			else:
 				print('I cannot (yet) deal with such types of questions.')
 				return [0,0,0]
+
+def getFullEntity(token):
+	ret = token.text
+	for child in token.children:
+		if child.dep_ == 'amod' or child.dep_ == 'compound':
+			ent = ' '.join(child.text)
+			ret = child.text + ' ' +ret
+	return ret		
+			
+
+
 
 #Function to check whether a proper noun is the last or only of compound:
 def lastOfComp(result, x):
