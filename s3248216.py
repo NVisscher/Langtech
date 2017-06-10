@@ -97,10 +97,22 @@ def get_answer(x, y):
 
 # Find x and y, and make the input ready for further processing.
 def pre_processor(input, nlp):
+    doc = nlp(input)
+
+    a = type1(doc)
+
+    if len(a[0]) > 0 and len(a[1]) > 0:
+        return [" ".join(a[0]).strip().lower(), " ".join(a[1]).strip().lower()]
+    else:
+        b = type2(doc)
+
+        if len(b[0]) is not None and len(b[1]) is not None:
+            return [b[0], b[1]]
+
+
+def type1(doc):
     x = []
     y = []
-
-    doc = nlp(input)
 
     found_x = False
     found_y = False
@@ -145,10 +157,23 @@ def pre_processor(input, nlp):
                 if start_y is True:
                     found_y = True
 
-    if x is not None and y is not None:
-        return [" ".join(x).strip().lower(), " ".join(y).strip().lower()]
-    else:
-        return None
+    return [x, y]
+
+
+def type2(doc):
+    x = None
+    y = None
+
+    found_x = False
+
+    for ent in doc:
+        if (ent.tag_ == "NN" or ent.tag_ == "NNP" or ent.tag_ == "NNS" or ent.tag_ == "NNPS") and found_x:
+            y = ent.text
+        if (ent.tag_ == "NN" or ent.tag_ == "NNS" or ent.tag_ == "NNP") and not found_x:
+            x = ent.text
+            found_x = True
+
+    return [x, y]
 
 
 def get_answer_s3248216(question, nlp):
