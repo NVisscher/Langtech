@@ -49,6 +49,7 @@ def main(argv):
 		result = nlp(line)
 		[prop, ent, value] = findItems(result) #extract the useful words from the question
 		if [prop, ent, value]== [0,0,0]:
+			print('Nothing was found')
 			continue
 		if value !=None:
 			answer = yesnoQuery(prop, ent, value)
@@ -82,7 +83,7 @@ def descriptionQuery(ent):
 	outcome = []
 	uri = searchWithAnchorText(ent)	#Find the uri of the entity using Wikipedia anchor text
 	if uri == 'empty':
-		print("We cannot find \'" + ent +"\', so:")
+		#print("We cannot find \'" + ent +"\', so:")
 		return []
 	Qent = []
 	for x in uri:
@@ -116,14 +117,14 @@ def createAndFireQuery(prop, ent):
 
 	uri = searchWithAnchorText(ent)	#Find the uri of the entity using Wikipedia anchor text
 	if uri == 'empty':
-		print("We cannot find \'" + ent +"\', so:")
+		#print("We cannot find \'" + ent +"\', so:")
 		return []
 	Qent = []
 	for x in uri:
 		Qent.append(searchEntity(x)) #Find the Q number of the uri found above
 	for ent in Qent:
 		for prop in Qprop:
-			print(prop, Qprop)
+			#print(prop, Qprop)
 			wdQent = 'wd:'+ent
 			wdtQprop = 'wdt:'+prop
 
@@ -151,22 +152,26 @@ def entityList(ent):
 	if ent in knownentities:
 		ret.append(knownentities[ent])
 	#API
-	ret.append(searchIdEnt(ent))
+	ret.extend(searchIdEnt(ent))
 	#Anchor texts
 	uriEnt = searchWithAnchorText(ent)	#Find the uri of the entity using Wikipedia anchor text
 	for x in uriEnt:
-		print('x = ', x)
+		#print('x = ', x)
 		ret.append(searchEntity(x)) #Find the Q number of the uri found above
 	if not ret:
-		print("We cannot find \'" + ent)
+		#print("We cannot find \'" + ent)
 		return []
 	return ret
 
 #Function to create and fire a yes/no query
 def yesnoQuery(prop, ent, value):
 	Qprop = []
-	Qent = entityList(ent)
-	Qval = entityList(value)
+	Qent = []
+	Qval = []
+	if ent:
+		Qent = entityList(ent)
+	if value:
+		Qval = entityList(value)
 	outcome = []
 	Qprop.extend(searchIdProp(prop)) #Find the Q number of the property 
 	if prop == None:
@@ -177,8 +182,10 @@ def yesnoQuery(prop, ent, value):
 			Qprop.extend(searchIdProp(x))
 
 			
-	print('asking query :', Qent, Qval, Qprop)
+	#print('asking query :', Qent, Qval, Qprop)
 	for ent in Qent:
+		if not ent:
+			return outcome
 		for val in Qval:
 			for prop in Qprop:
 				wdQval = 'wd:' + val
@@ -265,21 +272,22 @@ def searchIdEnt(ent):
 
 	params['search'] = ent.rstrip()
 	json = requests.get(url,params).json()
+	answer = []
 	for result in json['search']:
-		return result ['id']
-		
+		answer.append(result ['id'])
+	return answer
 
 #Function find prop, ent and probably value:
 def findItems(result):
 	[prop, ent, value] = [None, None, None]
 #	nlp = spacy.load('en_default')
 #	result = nlp(sentence)
-	for w in result:
-		print("{} {} {} {} {}".format(w.lemma_,w.dep_,w.head.lemma_,w.pos_, w.ent_iob_))
+	#for w in result:
+		#print("{} {} {} {} {}".format(w.lemma_,w.dep_,w.head.lemma_,w.pos_, w.ent_iob_))
 	#Yes or no questions:
 	stype = 'else'
-	if result[0].lemma_ == 'be' or result[0].lemma_ == 'do':
-		print('This is a yes-no question')
+	if result[0].lemma_ == 'be' or result[0].lemma_ == 'do' or result[0].lemma == 'can' or result[0].lemma == 'have':
+		#print('This is a yes-no question')
 		#Type: is barbecuing a cooking technique? -> alle values doorzoeken.
 		for x in result:
 			if x.dep_=='ROOT' and (x.lemma_=='contain' or x.lemma_ == 'have'):
@@ -290,12 +298,12 @@ def findItems(result):
 			if w.dep_ == 'ROOT':
 				if stype == 'attr':
 					#attr sentence
-					print('This is an attr sentence')
+					#print('This is an attr sentence')
 					for x in result:
 						if x.head == w and x.dep_ == 'attr':
 							prop = x.lemma_
 							prop = getFullEntity(x)
-							print('x is now: ', prop)
+							#print('x is now: ', prop)
 						if x.head == w and (x.dep_ == 'nsubj' or x.dep_ == 'acomp'):
 							if x.pos == 'PROPN':
 								value = x.text
@@ -305,7 +313,7 @@ def findItems(result):
 						if x.dep_ == 'pobj':
 							ent = x.text
 							ent = getFullEntity(x)
-							print('x is now: ', ent)
+							#print('x is now: ', ent)
 							#for y in x.subtree:
 							#	print(y.lemma_)
 							#	if (y.pos_ == 'NOUN' or y.pos_ == 'PROPN' or y.dep_ == 'compound'):
@@ -314,7 +322,7 @@ def findItems(result):
 							#		print('ent: '+ ent)
 								
 				if stype == 'contain':
-					print('this is a contain sentence')
+					#print('this is a contain sentence')
 					for x in result:
 						if x.head== w and x.dep_=='nsubj':
 							ent = x.lemma_
@@ -323,37 +331,29 @@ def findItems(result):
 						prop = 'contain'	
 				if stype == 'else':
 					#rest
-					print('this is another sentence')
+					#print('this is another sentence')
 					for x in result:
 						if x.head == w and x.dep_ == 'nsubj' :
 							prop = x.lemma_
-							if x.pos_ == 'PROPN': # a proper name
-								prop  = ' '.join(compoundName(x))
-							else:
-								prop = x.lemma_ #make this more general	
-							print('prop: ' +prop)
+							prop = getFullEntity(x)
+							#print('prop: ' +prop)
 						if x.dep_ == 'pobj':
 							ent = x.lemma_
-							print('ent: '+ent)
-							for y in x.subtree:
-								print(y.lemma_ + y.pos_)
-								if (y.pos_ == 'NOUN' or y.pos_ == 'PROPN'):
-									if y.pos_ == 'PROPN': # a proper name
-										ent  = ' '.join(compoundName(y))
-	#									print('value: '+value
+							#print('ent: '+ent)
+							ent = getFullEntity(x)
 						if x.head == w and (x.dep_ == 'acomp' or x.dep_ == 'dobj'):
-							value = x.lemma_		
+							value = x.lemma_
 				if ent == None: # Is an apple fruit?
-					print('before: '+ prop,ent,value)
+					#print('before: '+ prop,ent,value)
 					ent = value
 					value = prop
 					prop = None
 					#print(prop)
 					
 					
-				print(prop, ent, value)
+				#print(prop, ent, value)
 				return [prop, ent, value];
-				print('I did not find the correct property and entity, sorry')
+				#print('I did not find the correct property and entity, sorry')
 				return [0,0,0]
 #	else:
 #		if result[0].lemma_ =='DO':
@@ -363,7 +363,7 @@ def findItems(result):
 		#where questions
 	else:
 		if result[0].lemma_ == 'where':
-#			print('This is a where-question')
+#			#print('This is a where-question')
 			prop = 'location'
 			for w in result:
 				if w.dep_== 'ROOT':
@@ -373,9 +373,9 @@ def findItems(result):
 									ent  = ' '.join(compoundName(x))
 							else:
 								ent = x.lemma_ #make this more general	
-#							print(ent)
+#							#print(ent)
 							return [prop, ent, None];
-					print('I did not find the correct property and entity, sorry')
+					#print('I did not find the correct property and entity, sorry')
 					return [0,0,0]
 		#when-questions
 	#else if result(0).lemma_ == 'when':
@@ -384,11 +384,11 @@ def findItems(result):
 	#what is the x of y questions new:
 		else:
 			if result[0].lemma_ == 'what' or result[0].lemma_ == 'who' or result[0].pos_ == 'VERB':
-#				print('This is a what or who question')
+#				#print('This is a what or who question')
 				for w in result:
 					#print("{} {} {}".format(w.lemma_,w.dep_,w.head.lemma_))
 					if w.dep_ == 'ROOT': # w = be:
-#						print('ROot: '+ w.lemma_)
+#						#print('ROot: '+ w.lemma_)
 						prop = None
 						ent = None
 						case = None
@@ -402,7 +402,7 @@ def findItems(result):
 									for z in result:
 										if z.head == x and z.dep_ == 'case':
 											case = 'prop'
-#									print('prop: ' + prop)
+#									#print('prop: ' + prop)
 								else:
 									if x.pos_ == 'PROPN': # a proper name
 										ent  = ' '.join(compoundName(x))
@@ -411,17 +411,16 @@ def findItems(result):
 									for z in result:
 										if z.head == x and z.dep_ == 'case':
 											case = 'ent'	
-#									print('ent: ' + ent)	
+#									#print('ent: ' + ent)	
 						if ent ==None or  prop==None:
 							if ent !=None:
-								print("this is a what is ... question")
+								#print("this is a what is ... question")
 								return [prop, ent, value]
 							if prop != None:
-								print("this is a what is ... question")								
+								#print("this is a what is ... question")								
 								return [ent, prop, value]
-							print('Either the property or the entity was not found, sorry.')
 							return[0,0,0]
-#						print(case)
+#						#print(case)
 						if case == 'prop':
 							temp = prop
 							prop = ent
@@ -429,10 +428,10 @@ def findItems(result):
 						if case != None:
 							ent = ent.replace(' \'s', '')
 						#[prop, ent] = caseCheck(prop, ent)
-#						print('prop ' + prop + ', ent '+ ent)							
+#						#print('prop ' + prop + ', ent '+ ent)							
 						return [prop, ent, None]
 			else:
-				print('I cannot (yet) deal with such types of questions.')
+				#print('I cannot (yet) deal with such types of questions.')
 				return [0,0,0]
 
 def getFullEntity(token):
@@ -450,7 +449,7 @@ def getFullEntity(token):
 def lastOfComp(result, x):
 	for w in result:
 		if x.head == w and x.dep_ == 'compound':
-#			print('not last of compound')
+#			#print('not last of compound')
 			return 0
 #	print('last of compound') 
 	return 1
@@ -507,7 +506,7 @@ def extractWords(line):
 	#Find the property and entity to be used:	
 	m = re.search('is (.*) of (.*)\?', line)
 	if m == None:#wrong spelling
-		print("Probably you made a spelling mistake")
+		#print("Probably you made a spelling mistake")
 		return [0,0]
 	else:
 		prop = m.group(1)
