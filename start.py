@@ -22,6 +22,9 @@ def selectAnswers(line, answers1, answers2, answers3):
         return ["Yes"]
     # Check if there are two identical answers
     allanswers = [answers1, answers2, answers3]
+    # Remove duplicates
+    if "founded"  in line and answers2 != []:
+		return answers2
     for List in allanswers:
         occurences = 0
         for List2 in allanswers:
@@ -29,9 +32,6 @@ def selectAnswers(line, answers1, answers2, answers3):
                 occurences += 1
         if occurences > 1:
             return List
-    # Remove duplicates
-    if "founded"  in line and answers2 != []:
-        return answers2
     if answers1:
         return answers1
     if answers2:
