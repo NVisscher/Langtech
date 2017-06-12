@@ -6,6 +6,8 @@ import json, requests, sys, re
 
 from sharedcode import *
 
+anchordict = {}
+
 knownentities = {
 	"milk": "wd:Q8495",
 	"katsuobushi": "wd:Q113739",
@@ -81,7 +83,8 @@ def findEntity(description):
 		return []
 	try:
 		id = knownentities[description]
-		return [id]
+		if id != "":
+			return [id]
 	except KeyError:
 		# Try finding it online
 		# Set parameters
@@ -95,6 +98,9 @@ def findEntity(description):
 		output = []
 		for result in jsondata['search']:
 			output.append("wd:" + result['id'])
+		if output:
+			return output
+		output = entities_from_anchor_dict(description, anchordict)
 		return output
 
 # Find a property. Also very important
@@ -230,7 +236,6 @@ def parseHowManyHave(question, doc):
 		p = re.compile(pattern)
 		m = p.findall(question)
 		for match in m:
-			print(match)
 			x = match[0] # Example: employees
 			y = cleanSubjectList(explodeOf(match[2])) # Example: Burger King
 			# Try "X" of "Y" and hope to find a number
@@ -254,7 +259,7 @@ def parseHowManyHave(question, doc):
 			x = findLemmaForms(doc, match[0])
 			answer = evaluateList([x] + y, [])
 			if len(answer) > 0:
-				answers.append(len(answer))
+				answers.append(len(list(set(answer))))
 	if answers == []:
 		return []
 	return [str(max(answers))]
@@ -293,10 +298,10 @@ def parseGeneric(question, doc):
 	return answers
 
 
-def get_answer_s2020947(question, nlp):
+def get_answer_s2020947(question, nlp, anchor_dict):
 	nonewline = question.replace('\n', '')
 	doc = nlp(nonewline)
-	
+	anchordict = anchor_dict
 	output = []
 	#output = output + parseWhatis(question, doc)
 	output = output + parseWhodid(question, doc)
