@@ -77,31 +77,45 @@ def findAgent(lemma):
 		return lemma + "r"
 	return lemma + "er"
 
+def generateKeywords(word):
+	output = [word]
+	# Special characters? Remove and add alternatives
+	nospecial = re.sub(" 's", 's', word)
+	if nospecial != word:
+		# Use variant with concatenated S, and without
+		output.append(re.sub(" 's", 's', word))
+		output.append(re.sub(" 's", '', word))
+	nospecial2 = re.sub('[^A-Za-z0-9 ]+', '', word)
+	if nospecial2 != word:
+		output.append(nospecial2)
+	return output
+
 # Find an entity. Very important
 def findEntity(description):
 	if description == '':
 		return []
-	try:
-		id = knownentities[description]
-		if id != "":
-			return [id]
-	except KeyError:
-		# Try finding it online
+	if description in knownentities:
+		return knownentities[description]
+	# Try finding it online
+	keywords = generateKeywords(description)
+	output = []
+	for keyword in keywords:
 		# Set parameters
 		params = {'action': 'wbsearchentities', 'language': 'en', 'format': 'json'}
 		url = 'https://wikidata.org/w/api.php'
-		params['search'] = description
+		params['search'] = keyword
 		# Fetch data
 		data = requests.get(url, params=params)
 		jsondata = json.loads(data.text)
 		# Generate output
-		output = []
 		for result in jsondata['search']:
 			output.append("wd:" + result['id'])
 		if output:
 			return output
+	# Nothing was found
+	if anchordict:
 		output = entities_from_anchor_dict(description, anchordict)
-		return output
+	return output
 
 # Find a property. Also very important
 def findProperty(description):
@@ -112,7 +126,6 @@ def findProperty(description):
 		return [id]
 	except KeyError:
 		# Try something else
-		#debugLog("Niels: Trying to find property " + description)
 		# Set parameters
 		params = {'action': 'wbsearchentities', 'language': 'en', 'format': 'json', 'type': 'property'}
 		url = 'https://wikidata.org/w/api.php'
@@ -297,9 +310,20 @@ def parseGeneric(question, doc):
 			answers = answers + evaluateList(subjectlist, [])
 	return answers
 
+def parseNamedAfter(question, doc):
+	answers = []
+	p = re.compile('What is the (.+) of the (\S+) (.+) was named after?')
+	m = p.findall(question)
+	for match in m:
+		subjectlist = [match[0], "named after"] + explodeOf(match[2])
+		subjectlist = cleanSubjectList(subjectlist)
+		answers = answers + evaluateList(subjectlist, [])
+	return answers
 
 def get_answer_s2020947(question, nlp, anchor_dict):
 	nonewline = question.replace('\n', '')
+	if nonewline == "":
+		return []
 	doc = nlp(nonewline)
 	anchordict = anchor_dict
 	output = []
@@ -307,5 +331,6 @@ def get_answer_s2020947(question, nlp, anchor_dict):
 	output = output + parseWhodid(question, doc)
 	output = output + parseImperative(question, doc)
 	output = output + parseHowManyHave(question, doc)
+	output = output + parseNamedAfter(question, doc)
 	output = output + parseGeneric(question, doc)
 	return output
