@@ -29,12 +29,12 @@ def queryEntProp(entList1, entList2):
       if data['boolean']:
         return True
 
-def solveBooleanQuestion(line, nlp):
+def solveBooleanQuestion(line, nlp, anchor_dict):
   tokens = getGoodTokens(line, nlp)
   #Check if there are no conjuctions
   for token in tokens:
     if token.conj:
-      return solveConjunctedQuestion(tokens)
+      return solveConjunctedQuestion(tokens, anchor_dict)
   #Otherwise first test entity ? entity
   string = ''
   for token in tokens:
@@ -43,18 +43,18 @@ def solveBooleanQuestion(line, nlp):
   if len(tokens) > 3:#Lot quicker maar mischien niet optimaal
     return ['Yes']
   for ent1 in tokens:
-    entList1 = get_entities(ent1.text)
+    entList1 = get_entities(ent1.text, anchor_dict)
     for ent2 in tokens:
       if(ent1.text == ent2.text):
         continue
-      if queryEntEnt(entList1, get_entities(ent2.text)):
+      if queryEntEnt(entList1, get_entities(ent2.text, anchor_dict)):
         return ['Yes']
       if queryEntProp(entList1, get_properties(ent2.text)):
         return ['Yes']
   #And then test entity property
   return ['No']
 
-def solveConjunctedQuestion(tokens):
+def solveConjunctedQuestion(tokens, anchor_dict):
   otherEnts = []
   lastEnts = []
   isOr = False
@@ -72,10 +72,10 @@ def solveConjunctedQuestion(tokens):
   if isOr:
     for otherent in otherEnts:
       ret = ''
-      ent1 = get_entities(otherent)
-      if queryEntEnt(ent1, get_entities(lastEnts[0])):
+      ent1 = get_entities(otherent, anchor_dict)
+      if queryEntEnt(ent1, get_entities(lastEnts[0], anchor_dict)):
         ret = lastEnts[0]
-      if queryEntEnt(ent1, get_entities(lastEnts[1])):
+      if queryEntEnt(ent1, get_entities(lastEnts[1], anchor_dict)):
         if ret == '':
           ret = lastEnts[1]
         else:
@@ -85,7 +85,7 @@ def solveConjunctedQuestion(tokens):
     return [lastEnts[0]]
   else:# not or but and
     for otherent in otherEnts:
-      ent1 = get_entities(otherent)
-      if queryEntEnt(ent1, get_entities(lastEnts[0])) and queryEntEnt(ent1, get_entities(lastEnts[1])):
+      ent1 = get_entities(otherent, anchor_dict)
+      if queryEntEnt(ent1, get_entities(lastEnts[0], anchor_dict)) and queryEntEnt(ent1, get_entities(lastEnts[1], anchor_dict)):
         return ["Yes"]
   return ["No"]

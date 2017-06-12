@@ -7,6 +7,7 @@ import mmap
 import time
 from lxml import html
 from learnparse import parse_question
+from sharedcode import entities_from_anchor_dict
 
 #Use wikidata search engine for properties
 def get_scraper_props(name):
@@ -19,40 +20,6 @@ def get_scraper_props(name):
     prop = prop.translate(translator)
     retprops.append(prop)
   return retprops
-
-#Read the whole file to a dictionary
-def init_anchor_dict():
-  file = open('../anchor_texts', 'r')
-  m = mmap.mmap(file.fileno(), 0, access = mmap.ACCESS_READ)
-  pattern = re.compile(rb"^(.*)\t(<.*>)\t([0-9]+)", re.MULTILINE)
-  anchor_dict = {}
-  for match in pattern.findall(m):
-    key = str(match[0], 'utf-8')
-    url = str(match[1], 'utf-8')
-    count = int(str(match[2], 'utf-8'))
-    if key not in anchor_dict:
-      anchor_dict[key] = []
-    anchor_dict[key].append((url, count))
-  return anchor_dict
-
-#Pick the best entities from the anchor dict
-def entities_from_anchor_dict(key):
-  if key not in anchor_dict:
-    return []
-  occurences = anchor_dict[key]
-  total = 0
-  for word, cnt in occurences:
-    total += cnt
-  avg = int(total/len(occurences))
-  url = 'https://query.wikidata.org/sparql'
-  ret = []
-  for word, cnt in occurences:
-    if cnt >= avg:
-      query = 'SELECT ?e WHERE {'+word+' schema:about ?e .}'
-      result = requests.get(url,params={'query': query, 'format': 'json'}).json()['results']['bindings']
-      for item in result:
-        ret.append(item['e']['value'][31:])
-  return ret
 
 #Use wikidata API to find properties and entities
 def get_uri(name, isProperty):
@@ -107,9 +74,9 @@ def fire_queries(entities, properties):
         return answers
   return []
 
-def get_entities(entityString):
+def get_entities(entityString, anchor_dict):
   entities = get_uri(entityString,False) #Get uri's for the entity from wikidata API
-  extraents = entities_from_anchor_dict(entityString)#Get extra entity uris from anchor texts
+  extraents = entities_from_anchor_dict(entityString, anchor_dict)#Get extra entity uris from anchor texts
   for ent in extraents:
     if ent not in entities:
       entities.append(ent)
@@ -124,14 +91,14 @@ def get_properties(propertyString):
   return properties
 
 
-def create_and_fire_query(line, nlp):
+def create_and_fire_query(line, nlp, anchor_dict):
   entsAndProps = parse_question(line, nlp)
   entStrings = entsAndProps[0]
   propStrings = entsAndProps[1]
   if not entStrings or not propStrings:
     return []
   for entityString in entStrings:
-    entities = get_entities(entityString)
+    entities = get_entities(entityString, anchor_dict)
     for propertyString in propStrings:
       if propertyString == entityString:
         continue
@@ -147,7 +114,7 @@ def create_and_fire_query(line, nlp):
           return answers
     if ' ' in entityString: # Try last part of composed nouns
       tempent = entityString.split(' ')[len(entityString.split(' '))-1]
-      entities = get_entities(tempent)
+      entities = get_entities(tempent, anchor_dict)
       for propertyString in propStrings:
         if propertyString == entityString:
           continue
@@ -157,7 +124,3 @@ def create_and_fire_query(line, nlp):
           return answers
   return []
 
-print("\nReading anchor_texts to dictionary(about 20 seconds)\nPlease wait...")
-start = time.time()
-anchor_dict = {}#init_anchor_dict()
-print("Completed in " + str(time.time()-start) + " seconds.\n")

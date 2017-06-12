@@ -18,10 +18,10 @@ def get_description(ent):
     return None
   return description
 
-def solveWhatIsQuestion(line, nlp):
+def solveWhatIsQuestion(line, nlp, anchor_dict):
   tokens = getGoodTokens(line, nlp)
   text = tokens[len(tokens)-1].text
-  entities = get_entities(text)
+  entities = get_entities(text, anchor_dict)
   for ent in entities:
     descr = get_description(ent)
     if descr:
