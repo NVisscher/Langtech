@@ -24,7 +24,7 @@ def selectAnswers(line, answers1, answers2, answers3):
     allanswers = [answers1, answers2, answers3]
     # Remove duplicates
     if "founded"  in line and answers2 != []:
-		return answers2
+	    return answers2
     for List in allanswers:
         occurences = 0
         for List2 in allanswers:
