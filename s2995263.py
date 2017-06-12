@@ -22,9 +22,9 @@ def get_answer(result):
 	if value !=None:
 		answer = yesnoQuery(prop, ent, value)
 		if answer == True:
-			return "yes"
+			return ["yes"]
 		else:
-			return "no"
+			return ["no"]
 	elif prop!=None:
 		answer = createAndFireQuery(prop, ent)
 	else:
@@ -37,7 +37,7 @@ def get_answer(result):
 			lijst.append(item)
 		return lijst
 	
-
+	
 def main(argv):
 
 	printExampleQueries();
@@ -46,13 +46,14 @@ def main(argv):
 		if line == "\n" or line == None:
 			print("You stopped.")
 			return	
-		result = nlp(line)
+		result = nlp(re.sub('[0-9]+-s[0-9]+[\t ]+','',line))
 		[prop, ent, value] = findItems(result) #extract the useful words from the question
 		if [prop, ent, value]== [0,0,0]:
 			print('Nothing was found')
 			continue
 		if value !=None:
 			answer = yesnoQuery(prop, ent, value)
+			print(line)
 			if answer == True:
 				print("yes")
 			else:
@@ -63,11 +64,12 @@ def main(argv):
 			elif ent!=None:
 				answer = descriptionQuery(ent)
 				if not answer:
-					print("cannot find description")
+					#print("cannot find description")
 					continue
-			if not answer:
-				print("Either I did not understand your question or the answer is not known by Wikidata. Sorry.")
-			else:
+			#if not answer:
+			#	print("Either I did not understand your question or the answer is not known by Wikidata. Sorry.")
+			if answer:
+				print (line)
 				for item in answer:
 					print(item)
 					
