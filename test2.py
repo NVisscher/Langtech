@@ -19,7 +19,7 @@ from s2995263 import get_answer_s2995263
 def selectAnswers(line, answers1, answers2, answers3):
     output = list(set(answers1 + answers2 + answers3))
     # "Yes Yes No" => "Yes No" => "Yes"
-    if "Yes" in output or "yes" in output:
+    if "Yes" in output or "yes" in output and not " or " in line:
         return ["Yes"]
     # Check if there are two identical answers
     allanswers = [answers1, answers2, answers3]
