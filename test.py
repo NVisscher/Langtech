@@ -47,7 +47,7 @@ for item in items:
     # Run the question.
     p1 = p2 = p3 = p4 = []
     try:
-      p1 = get_answer_s2020947(question, nlp)
+      pass#p1 = get_answer_s2020947(question, nlp)
     except:
       print("Exception in s2020947")
     try:
@@ -55,11 +55,11 @@ for item in items:
     except:
       print("Exception in s2576597")
     try:
-      p3 = get_answer_s2995263(question, nlp)
+      pass#p3 = get_answer_s2995263(question, nlp)
     except:
       print("Exception in s2995263")
     try:
-      p4 = get_answer_s3248216(question, nlp)
+      pass#p4 = get_answer_s3248216(question, nlp)
     except:
       print("Exception in s3248216")
     answers = list(set(p1 + p2 + p3 + p4))

@@ -6,6 +6,7 @@ import re
 import socket
 
 from sharedcode import *
+from xml.dom import minidom
 
 from s2020947 import get_answer_s2020947
 from s2576597 import get_answer_s2576597
@@ -46,6 +47,9 @@ if socket.gethostname() == 'Aspire' or socket.gethostname() == 'DESKTOP-6OMO0PT'
     nlp = spacy.load("en")
 else:
     nlp = spacy.load("en_default")
+
+xmldoc = minidom.parse("data/cleanquestions.xml")
+items = xmldoc.getElementsByTagName('question')
     
 print("\nReading anchor_texts to dictionary(about 20 seconds)\nPlease wait...")
 start = time.time()
@@ -54,7 +58,8 @@ print("Completed in " + str(time.time()-start) + " seconds.\n")
 
 debugLog("Ready")
 
-for line in sys.stdin:
+for item in items:
+    line = item.getElementsByTagName('string')[0].firstChild.nodeValue
     temp = re.split('\t', line)
     if len(temp) == 2:
         questionid = temp[0]
