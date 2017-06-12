@@ -30,7 +30,7 @@ def selectAnswers(line, answers1, answers2, answers3):
         if occurences > 1:
             return List
     # Remove duplicates
-    if " founded "  in line and answers2:
+    if " founded "  in line and answers2 != []:
         return answers2
     if answers1:
         return answers1
