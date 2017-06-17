@@ -1,0 +1,33 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{Language Technology Practical}
+\author{Thijs Eker, Niels Visscher, Kenneth Muller, Maaike Los }
+\date{June 2017}
+
+\begin{document}
+
+\maketitle
+
+\section{How the system works}
+Instead of creating one system that can deal with all questions, we decided to work out three different subsystems that all try to answer the questions, and combine their answers. Because the three systems are essentially different in the way they retrieve their answers, we hope to have more chance to be able to answer many different types of questions. The three subsystems we developed are as follows:
+\subsection*{System 1}
+\subsection*{System 2}
+\subsection*{System 3}
+This system determines what type of question is being asked based on either NLP dependencies or the first word of the sentence. It is capable of distinguishing between four types of questions.\\
+First of all, boolean questions, which are questions where either yes or no is the expected answer. These questions can be identified by having a sentence that starts with one of the following verbs: 'be', 'do', 'can' or 'have' (e.g. Is white the color of milk?). We solve these questions by extracting the two entities from the sentence and putting these into an ask query which has the following form:\\
+'ASK{ entity1 ?free entity2}'. This will result in a boolean answer which we convert to yes or no.\\
+Secondly, we have answers which ask for a location. Location-based questions are identified when a given sentence start with the word 'where' (e.g. Where are the headquarters of the KFC?). The way this was handled was by taking 'location' as the property and then extracting the entity from the question.\\
+Thirdly, there are description questions. Description questions are generally structured like 'Who/what is x?', which requires us to search for the wikidata description of the given x (e.g. What is a tomato?). Similarly to how names instead of Q-values are obtained by asking for a label in SPARQL, we can also obtain the description of a given entity in a SPARQL query by adding ?entityDescription to the SELECT statement.\\
+Finally, we have the 'x of y' questions, which are generally sentences which provide us with an entity to search for (y) and the property of this entity (x) (e.g. What is the country of origin of spaghetti?).\\
+To find the properties and/or entities, we used the NLP dependencies which were obtained through the use of spaCy. These values are different for each of the question types, and they may differ within these types. The dependencies that we used to obtain our properties and entities are based on the questions which can be found on the nestor page. Furthermore, we needed to be able to properly obtain compounds. To do this, for every entity or property that we found, we looked into the subtree provided by spaCy and checked if any of the words in this subtree had a dependency of 'compound' or 'amod'. If this is the case then this should be added to the given entity or property, otherwise it should not.\\
+After we have obtained these entities and properties, we have to obtain proper values to send into our SPARQL queries. Originally we were given the choice between an API or anchortexts, but we decided to combine both methods. We compile a list with the top-5 results, such that we end up with a list of at most 10 results, from both the API and the anchortexts. These results are then one-by-one used for our SPARQL query until we obtain an answer. If we cannot obtain an answer after looping through the entire list, we return an empty list.\\
+\\
+\\
+After having all three systems run over a question, we checked whether or not there were two or more systems that gave the same answer. If so, this became our final answer. Else, we looked at respectively system 1, system 2 and system 3 in this order whether they found and answer and return that answer. We chose this order because in our test session, system 1 had the highest percentage of correct answers and system 3 the lowest.  
+
+\section{evaluation}
+
+\section{accountability}
+
+\end{document}
