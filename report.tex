@@ -17,7 +17,6 @@ The goal of the assignment was to create a system that answers questions in natu
 \section{How the system works}
 Instead of creating one system that can deal with all questions, we decided to work out three different subsystems that all try to answer the questions, and combine their answers. Because the three systems are essentially different in the way they retrieve their answers, we hope to have an increased probability to be able to answer many different types of questions. \\
 After having all three systems run over a question, we checked whether or not there were two or more systems that gave the same answer. If this is the case, this became our final answer. Otherwise, we looked at respectively system 1, system 2 and system 3 in this order whether they found and answer and return that answer. We chose this order because in our test sessions (on the student made question file), system 1 had the highest percentage of correct answers and system 3 the lowest.\\
-
 Now we will describe the individual systems in more depth:
 
 \section*{System 1}
@@ -73,6 +72,7 @@ Finally, we have the 'x of y' questions, which are generally sentences which pro
 To find the properties and/or entities, we used the NLP dependencies which were obtained through the use of spaCy. These values are different for each of the question types, and they may differ within these types. The dependencies that we used to obtain our properties and entities are based on the questions which can be found on the nestor page. Furthermore, we needed to be able to properly obtain compounds. To do this, for every entity or property that we found, we looked into the subtree provided by spaCy and checked if any of the words in this subtree had a dependency of 'compound' or 'amod'. If this is the case then this should be added to the given entity or property, otherwise it should not.\\
 After we have obtained these entities and properties, we have to obtain proper values to send into our SPARQL queries. Originally we were given the choice between an API or anchortexts, but we decided to combine both methods. We compile a list with the top-5 results, such that we end up with a list of at most 10 results, from both the API and the anchortexts. These results are then one-by-one used for our SPARQL query until we obtain an answer. If we cannot obtain an answer after looping through the entire list, we return an empty list.\\
 
+\section*{Evaluation}
 \subsection*{Evaluation on the big question-answer file}
 To get a good feel of how our system performed we continuously ran our system on the 1025 questions(mostly looking at recall). In the beginning our system would only try to solve X of Y questions in the most basic ways and we had score of around 350 questions answered. After refining the three systems and adding functionality for what is, yes/no and count questions we doubled that score.
 \subsection*{Test questions}
