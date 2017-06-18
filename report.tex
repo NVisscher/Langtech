@@ -50,7 +50,14 @@ After we have obtained these entities and properties, we have to obtain proper v
 After having all three systems run over a question, we checked whether or not there were two or more systems that gave the same answer. If so, this became our final answer. Else, we looked at respectively system 1, system 2 and system 3 in this order whether they found and answer and return that answer. We chose this order because in our test session, system 1 had the highest percentage of correct answers and system 3 the lowest.  
 
 \section{evaluation}
+Our system was capable of answering 29 out of the 50 test questions properly. The questions we were able to correctly answer were questions in the original format (What are the ingredients of Coca-Cola?), since this is the type of question that we had to be able to answer for assignment 4, all of our systems are well prepared to answer these questions. Furthermore, our system is capable of answering lots of boolean-typed questions where we have to check whether one entity can be found in another entity (do hamburgers contain meat?). Finally, questions where we had to obtain a description of an entity were also answered (Who is Gordon Ramsay?). Our system specifically performed poorly on one question (What is a vegetarian), where an exception was raised. The exact reasoning behind this exception is unknown, since we are actually capable of answering other questions which require us to obtain a description.
+Another type of question which our system had difficulties with are questions where the order of a property and an entity are switched around (What does Heineken produce?), since our systems generally search for a property followed by an entity.
+We also had difficulties with returning lists of items which all contain a certain property (Which seafood dishes originate from spain), since none of our systems were equipped to answer these questions.
 
 \section{accountability}
+Since we had multiple systems that we had to work on, we divided these amongst ourselves.
+Thijs worked on system 1 while Niels worked on system 2 and Maaike and Kenneth worked on system 3.
+Furthermore, Thijs and Niels set up the program which allowed us to combine the answers of all of our systems.
+Finally, everyone put effort into the report.
 
 \end{document}
