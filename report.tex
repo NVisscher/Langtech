@@ -17,6 +17,7 @@ The goal of the assignment was to create a system that answers questions in natu
 \section{How the system works}
 Instead of creating one system that can deal with all questions, we decided to work out three different subsystems that all try to answer the questions, and combine their answers. Because the three systems are essentially different in the way they retrieve their answers, we hope to have more chance to be able to answer many different types of questions. \\
 After having all three systems run over a question, we checked whether or not there were two or more systems that gave the same answer. If so, this became our final answer. Else, we looked at respectively system 1, system 2 and system 3 in this order whether they found and answer and return that answer. We chose this order because in our test session(on the student made question file), system 1 had the highest percentage of correct answers and system 3 the lowest.\\
+
 Now we will describe the individual systems in more depth:
 
 \section*{System 1}
@@ -71,20 +72,11 @@ Thirdly, there are description questions. Description questions are generally st
 Finally, we have the 'x of y' questions, which are generally sentences which provide us with an entity to search for (y) and the property of this entity (x) (e.g. What is the country of origin of spaghetti?).\\
 To find the properties and/or entities, we used the NLP dependencies which were obtained through the use of spaCy. These values are different for each of the question types, and they may differ within these types. The dependencies that we used to obtain our properties and entities are based on the questions which can be found on the nestor page. Furthermore, we needed to be able to properly obtain compounds. To do this, for every entity or property that we found, we looked into the subtree provided by spaCy and checked if any of the words in this subtree had a dependency of 'compound' or 'amod'. If this is the case then this should be added to the given entity or property, otherwise it should not.\\
 After we have obtained these entities and properties, we have to obtain proper values to send into our SPARQL queries. Originally we were given the choice between an API or anchortexts, but we decided to combine both methods. We compile a list with the top-5 results, such that we end up with a list of at most 10 results, from both the API and the anchortexts. These results are then one-by-one used for our SPARQL query until we obtain an answer. If we cannot obtain an answer after looping through the entire list, we return an empty list.\\
-\\
-\\
-After having all three systems run over a question, we checked whether or not there were two or more systems that gave the same answer. If so, this became our final answer. Else, we looked at respectively system 1, system 2 and system 3 in this order whether they found and answer and return that answer. We chose this order because in our test session, system 1 had the highest percentage of correct answers and system 3 the lowest.  
 
 \section{Evaluation}
 Our system was capable of answering 29 out of the 50 test questions properly. The questions we were able to correctly answer were questions in the original format (What are the ingredients of Coca-Cola?), since this is the type of question that we had to be able to answer for assignment 4, all of our systems are well prepared to answer these questions. Furthermore, our system is capable of answering lots of boolean-typed questions where we have to check whether one entity can be found in another entity (do hamburgers contain meat?). Finally, questions where we had to obtain a description of an entity were also answered (Who is Gordon Ramsay?). Our system specifically performed poorly on one question (What is a vegetarian), where an exception was raised. The exact reasoning behind this exception is unknown, since we are actually capable of answering other questions which require us to obtain a description.
 Another type of question which our system had difficulties with are questions where the order of a property and an entity are switched around (What does Heineken produce?), since our systems generally search for a property followed by an entity.
 We also had difficulties with returning lists of items which all contain a certain property (Which seafood dishes originate from spain), since none of our systems were equipped to answer these questions.
-
-\section{Accountability}
-Since we had multiple systems that we had to work on, we divided these amongst ourselves.
-Thijs worked on system 1 while Niels worked on system 2 and Maaike and Kenneth worked on system 3.
-Furthermore, Thijs and Niels set up the program which allowed us to combine the answers of all of our systems.
-Finally, everyone put effort into the report.
 
 \section*{Evaluation}
 \subsection*{Evaluation on the big question-answer file}
@@ -94,6 +86,12 @@ On the test set of 50 questions, we gave 28 correct answers of 35 answers in tot
 One of the better points of our system solving yes/no questions: out of the 6 boolean questions we answered 5 correct.
 
 \section*{Accountability}
+
+Since we had multiple systems that we had to work on, we divided these amongst ourselves.
+Thijs worked on system 1 while Niels worked on system 2 and Maaike and Kenneth worked on system 3.
+Furthermore, Thijs and Niels set up the program which allowed us to combine the answers of all of our systems.
+Finally, everyone put effort into the report.\\
+
 Together we attended a few lab sessions and sketched out our plan. The python script calling the answer-question functions from the individual script was also written as a group. For the different systems we had a more individual approach with Niels working on system two, Maaike and Kenneth working on system three and Thijs working on system one. 
 
 
