@@ -1,5 +1,6 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
+\usepackage{graphicx}
 
 \title{Language Technology Practical}
 \author{Thijs Eker, Niels Visscher, Kenneth Muller, Maaike Los }
@@ -14,10 +15,31 @@
 
 
 \section{How the system works}
-Instead of creating one system that can deal with all questions, we decided to work out three different subsystems that all try to answer the questions, and combine their answers. Because the three systems are essentially different in the way they retrieve their answers, we hope to have more chance to be able to answer many different types of questions. The three subsystems we developed are as follows:
-\subsection*{System 1}
+Instead of creating one system that can deal with all questions, we decided to work out three different subsystems that all try to answer the questions, and combine their answers. Because the three systems are essentially different in the way they retrieve their answers, we hope to have more chance to be able to answer many different types of questions. \\
+After having all three systems run over a question, we checked whether or not there were two or more systems that gave the same answer. If so, this became our final answer. Else, we looked at respectively system 1, system 2 and system 3 in this order whether they found and answer and return that answer. We chose this order because in our test session(on the student made question file), system 1 had the highest percentage of correct answers and system 3 the lowest.\\
+Now we will describe the individual systems in more depth:
 
-\subsection*{System 2}
+\section*{System 1}
+The main idea behind our first system is that it analyzes the 1025 question-answer pairs provided on nestor and learns which parts of the sentence should be queried to get the correct answer.
+\subsection*{Creating a key}
+To figure out which sentences should be treated the same, the system does not look at the words in the sentence, but only to the dependencies. When the system gets a question like 'Which food maker has the most employees?'. We choose to first translate the sentence to a key. In this case the key would look like: \textit{ROOTnsubjdetcompounddobjdetamodpunct}(just the dependencies in the order of the three). This approach makes the system recognize some sentences that are the same, but not enough. To make the keys more general we left out a lot of dependencies. Things like det, punct and other dependencies that say less about the sentence. Furthermore we also concatenate the compound nouns and adjetives(conjunctions are also concatenated). After this the key we end up with is \textit{ROOTnsubjdobj}, which is general enough. Figure .. shows how we change the dependency tree to get the correct key. 
+\begin{figure}[!ht]
+    \centering
+        \includegraphics[width=7cm]{secondtree}
+    \caption{Original dependency tree and adjusted tree}
+    \label{fig:afb5}
+\end{figure}
+
+\subsection*{X of Y questions}
+Now that we have one key for a lot of similar sentences the process is already a bit easier. For every key we keep two small arrays, that indicate which nouns and verbs are good candidates as entity and which are good as a property. If the entity array has the highest value for the first noun, this means that it most likely is the entity we want to use. And if the property array has a high value for the second noun this probably is the property we need to use.\\
+To learn how to solve X of Y questions we simply take all the nouns and verbs from the sentence and try to combine them in a query(one as property and one as entity). For the sentence 'Who founded Burger King', this would be 'Burger king' as property and 'founded' as entity'. After we check the answer we add 1 to the second place of the entity array(the second noun was the correct entity) and also add 1 to the first place of the property array to indicate that the second noun was the property.\\
+When we later have to answer X of Y questions we translate the sentence to a key and simply look which nouns or verbs had good results in similar sentences(according to the 2 arrays).
+
+\subsection*{Other questions}
+We also analyzed the questions file to see which keys normally describe boolean or 'What is' questions. When we encounter such a key we solve these questions in a normal way, which is not to hard. For boolean questions we just query all combinations of the nouns in the sentence. First with a free property and two given entities. This works for questions like 'Does chocolate contain sugar?', because one of the queries will be something like \textbf{ASK(\{chocolate ?prop sugar\}}. For questions like 'Does soylent have a official site?' we also try queries like \textbf{ASK\{soylent officialSite ?enitity\}}.\\
+In the case of a what is question we just ask for a description.
+
+\section*{System 2}
 
 At the base of this system is a construction that answers "the X of Y" in the following form: A list of entities and properties is given, in which one element in the list is the property of the next element of the list. For example, "the mother of the queen of England" is parsed and stored as $["mother", "queen", "England"]$. Upon evaluation, the queen of England is looked up, after which the outcome is used to find the mother of the retrieved person. No maximum length of this list structure is defined, and multiple answers may be found, which are all used in the next iteration, until the list is empty.\\
 
@@ -39,7 +61,7 @@ Counting was done in three different ways. The requested property could be avail
 
 The `Who did' were given special attention as well; In the example question `Who founded Burger King?', we would like to find the `founder' of `Burger King', so after verifying that the second word was indeed a verb, the system tried to convert this verb into the `agent' carrying out the action, by again making minimal use of Spacy to find the lemma form, and trying to find it in a specified list of known agents. If it could not be found, it would try to form the agent by appending an `r' if the lemma ended with an `e', and `er' otherwise, which appears to work for English quite often.\\
 
-\subsection*{System 3}
+\section*{System 3}
 
 This system determines what type of question is being asked based on either NLP dependencies or the first word of the sentence. It is capable of distinguishing between four types of questions.\\
 First of all, boolean questions, which are questions where either yes or no is the expected answer. These questions can be identified by having a sentence that starts with one of the following verbs: 'be', 'do', 'can' or 'have' (e.g. Is white the color of milk?). We solve these questions by extracting the two entities from the sentence and putting these into an ask query which has the following form:\\
@@ -63,5 +85,16 @@ Since we had multiple systems that we had to work on, we divided these amongst o
 Thijs worked on system 1 while Niels worked on system 2 and Maaike and Kenneth worked on system 3.
 Furthermore, Thijs and Niels set up the program which allowed us to combine the answers of all of our systems.
 Finally, everyone put effort into the report.
+
+\section*{Evaluation}
+\subsection*{Evaluation on the big question-answer file}
+To get a good feel of how our system performed we continuously ran our system on the 1025 questions(mostly looking at recall). In the beginning our system would only try to solve X of Y questions in the most basic ways and we had score of around 350 questions answered. After refining the three systems and adding functionality for what is, yes/no and count questions we doubled that score.
+\subsection*{Test questions}
+On the test set of 50 questions, we gave 28 correct answers of 35 answers in total. The most important weakness of our system were questions like 'Which company produces frappucino?' or 'List products which contain goat milk.'. In these question we need to search for certain entity that has a property that is given. This would result in a query like \textbf{SELECT \{?entity contains milk\}}. None of the three systems had the possibility for queries like this. Since we only rarely encountered these kind of questions in the student made question file, we must have overlooked the potential of adding functionality for these questions.\\
+One of the better points of our system solving yes/no questions: out of the 6 boolean questions we answered 5 correct.
+
+\section*{Accountability}
+Together we attended a few lab sessions and sketched out our plan. The python script calling the answer-question functions from the individual script was also written as a group. For the different systems we had a more individual approach with Niels working on system two, Maaike and Kenneth working on system three and Thijs working on system one. 
+
 
 \end{document}
