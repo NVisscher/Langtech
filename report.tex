@@ -12,7 +12,7 @@
 
 \section{Introduction}
 
-
+The goal of the assignment was to create a system that answers questions in natural language and queries an open linked data source (in this case, dbpedia) in order to find the answers to those questions. We were to use Python3 for development and Sparql for querying the Dbpedia database.
 
 \section{How the system works}
 Instead of creating one system that can deal with all questions, we decided to work out three different subsystems that all try to answer the questions, and combine their answers. Because the three systems are essentially different in the way they retrieve their answers, we hope to have more chance to be able to answer many different types of questions. \\
@@ -20,7 +20,7 @@ After having all three systems run over a question, we checked whether or not th
 Now we will describe the individual systems in more depth:
 
 \section*{System 1}
-The main idea behind our first system is that it analyzes the 1025 question-answer pairs provided on nestor and learns which parts of the sentence should be queried to get the correct answer.
+The main idea behind our first system is that it analyzes the 1025 question-answer pairs provided on Nestor and learns which parts of the sentence should be queried to get the correct answer.
 \subsection*{Creating a key}
 To figure out which sentences should be treated the same, the system does not look at the words in the sentence, but only to the dependencies. When the system gets a question like 'Which food maker has the most employees?'. We choose to first translate the sentence to a key. In this case the key would look like: \textit{ROOTnsubjdetcompounddobjdetamodpunct}(just the dependencies in the order of the three). This approach makes the system recognize some sentences that are the same, but not enough. To make the keys more general we left out a lot of dependencies. Things like det, punct and other dependencies that say less about the sentence. Furthermore we also concatenate the compound nouns and adjetives(conjunctions are also concatenated). After this the key we end up with is \textit{ROOTnsubjdobj}, which is general enough. Figure .. shows how we change the dependency tree to get the correct key. 
 \begin{figure}[!ht]
