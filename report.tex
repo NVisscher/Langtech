@@ -13,6 +13,8 @@
 Instead of creating one system that can deal with all questions, we decided to work out three different subsystems that all try to answer the questions, and combine their answers. Because the three systems are essentially different in the way they retrieve their answers, we hope to have more chance to be able to answer many different types of questions. The three subsystems we developed are as follows:
 \subsection*{System 1}
 
+\subsection*{System 2}
+
 At the base of this system is a construction that answers "the X of Y" in the following form: A list of entities and properties is given, in which one element in the list is the property of the next element of the list. For example, "the mother of the queen of England" is parsed and stored as $["mother", "queen", "England"]$. Upon evaluation, the queen of England is looked up, after which the outcome is used to find the mother of the retrieved person. No maximum length of this list structure is defined, and multiple answers may be found, which are all used in the next iteration, until the list is empty.\\
 
 The interpretation of questions is based upon regular expressions in Python, by extracting relevant information in this array format, and evaluating it afterwards. Different regex patterns were defined to be able to handle as many different questions as possible.\\
@@ -32,8 +34,6 @@ NLP processing with Spacy was used in some cases, however the system was not mad
 Counting was done in three different ways. The requested property could be availeble as a number (employees of McDonald's, for example), in which cases the output could be used directly. In a second case, there might be a property called `Number of X', for example in `Number of households'. In the third case, every `X' was stored independently (like the ingredients in bread), and the program had to count them. All these possibilities were tried, and in case more than one of them yielded an answer (for example, `employees' of `McDonald's' returned an answer, but the number of fields could be counted as well) the highest number was returned as an answer.\\
 
 The `Who did' were given special attention as well; In the example question `Who founded Burger King?', we would like to find the `founder' of `Burger King', so after verifying that the second word was indeed a verb, the system tried to convert this verb into the `agent' carrying out the action, by again making minimal use of Spacy to find the lemma form, and trying to find it in a specified list of known agents. If it could not be found, it would try to form the agent by appending an `r' if the lemma ended with an `e', and `er' otherwise, which appears to work for English quite often.\\
-
-\subsection*{System 2}
 
 \subsection*{System 3}
 
